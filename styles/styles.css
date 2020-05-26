@@ -1,7 +1,7 @@
 *, *::before, *::after {
     box-sizing: border-box;
     font-family: 'Mukta', sans-serif;
-    /* background-color: #202020; */
+    background-color: #202020;
 }
 
 .container {
@@ -91,6 +91,10 @@
     font-family: 'MyWebFont', Arial, sans-serif;
 }
 
+.menu-view-section * {
+    background-color: inherit;
+    
+}
 
 /************* second *************/
 
@@ -182,6 +186,15 @@
     margin-top: 3%;   
 }
 
+.menu-confirm-section {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 0;
+    padding: 0;
+}
+
 #confirm-header {
     grid-area: hd;
 } 
@@ -197,22 +210,22 @@
 
 
 #first-selection {
-    background-color: white;
+    background-color: aqua;
 }
 
 #second-selection {
-    background-color: white;
+    background-color: violet;
 }
 
 #dessert-selection {
-    background-color: white;
+    background-color: blue;
 }
 
 #drinks-selection {
-    background-color: white;
+    background-color: aqua;
 }
 
 #confirm-selection {
-    background-color: white;
+    background-color: olivedrab;
 }
 
