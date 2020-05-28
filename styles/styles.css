@@ -27,6 +27,9 @@
                          "ft";
 }
 
+.prices {
+    list-style: none
+}
 
 /************** view **************/
 
@@ -49,16 +52,25 @@
 } 
 
 #view-content {
-    
     grid-area: cont;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
 }
-
-
 
 #view-footer {
     grid-area: ft;
 }
 
+.section-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: flex-start;
+}
 
 /************* first *************/  
 
