@@ -1,4 +1,4 @@
-function firstSelectionAdd(selector) {
+function selectionAdd(selector) {
     var num = document.getElementById(`${selector}`).innerText
 
     if (isNaN(num)) {
@@ -9,7 +9,7 @@ function firstSelectionAdd(selector) {
     }
 }
 
-function firstSelectionDel(selector) {
+function selectionDel(selector) {
     var num = document.getElementById(`${selector}`).innerText
 
     if (!isNaN(num)) {

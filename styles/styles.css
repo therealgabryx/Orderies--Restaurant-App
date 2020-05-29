@@ -1,8 +1,8 @@
 *, *::before, *::after {
     box-sizing: border-box;
     font-family: 'Mukta', sans-serif;
-    /* background-color: #202020; */
-    background-color: white;
+    background-color: #202020;
+    /* background-color: white; */
 }
 
 .container {
@@ -29,7 +29,7 @@
 }
 
 .nobullet {
-    list-style: none
+    list-style: none;
 }
 
 /************** view **************/
@@ -111,8 +111,24 @@
 
 .menu-view-section * {
     background-color: inherit;
-    
 }
+
+.menu-first-section * {
+    background-color: inherit;
+}
+
+.menu-second-section * {
+    background-color: inherit;
+}
+
+.menu-dessert-section * {
+    background-color: inherit;
+}
+
+.menu-drinks-section * {
+    background-color: inherit;
+}
+
 
 /************* second *************/
 
@@ -131,7 +147,15 @@
 
 #second-header {
     grid-area: hd;
+}
+
+#second-footer {
+    grid-area: ft;
 } 
+
+#second-content {
+    grid-area: cont;
+}
 
 /************* dessert *************/
 
@@ -189,7 +213,7 @@
 }
 
 
-/************* confirm *************/
+/************* confirm *************/ /*(NOT ACTUALLY IN HTML ATM..)*/
 
 #confirm-selection {   
     margin-top: 3%;   
@@ -215,8 +239,6 @@
 #confirm-footer {
     grid-area: ft;
 }
-
-
 
 #first-selection {
     background-color: aqua;
@@ -246,13 +268,24 @@
     flex-wrap: nowrap;
     align-items: flex-start;
     justify-content: space-between;
+    
 }
 
 .order-flex-section {
-    width: 20%;
-    margin-left: 5%;
+    margin-left: 0;
+    margin-bottom: 10%;
 }
 
-.order-flex-section #btns {
+#btns {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+#text {
     
+}
+
+.order-content {
+    width: 30%;
 }
