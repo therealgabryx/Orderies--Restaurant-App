@@ -2,6 +2,7 @@
     box-sizing: border-box;
     font-family: 'Mukta', sans-serif;
     background-color: #202020;
+    /* background-color: white; */
 }
 
 .container {
@@ -27,8 +28,8 @@
                          "ft";
 }
 
-.prices {
-    list-style: none
+.nobullet {
+    list-style: none;
 }
 
 /************** view **************/
@@ -36,6 +37,10 @@
 #menu-view {                
     margin-top: 3%;
     background-color: white;
+}
+
+.menu-component {
+    margin: 5%;
 }
 
 .menu-view-section {
@@ -76,6 +81,7 @@
 
 #first-selection {                
     margin-top: 3%;
+    background-color: white;
 }
 
 .menu-first-section {
@@ -105,8 +111,24 @@
 
 .menu-view-section * {
     background-color: inherit;
-    
 }
+
+.menu-first-section * {
+    background-color: inherit;
+}
+
+.menu-second-section * {
+    background-color: inherit;
+}
+
+.menu-dessert-section * {
+    background-color: inherit;
+}
+
+.menu-drinks-section * {
+    background-color: inherit;
+}
+
 
 /************* second *************/
 
@@ -125,16 +147,15 @@
 
 #second-header {
     grid-area: hd;
+}
+
+#second-footer {
+    grid-area: ft;
 } 
 
 #second-content {
     grid-area: cont;
 }
-
-#second-footer {
-    grid-area: ft;
-}
-
 
 /************* dessert *************/
 
@@ -192,7 +213,7 @@
 }
 
 
-/************* confirm *************/
+/************* confirm *************/ /*(NOT ACTUALLY IN HTML ATM..)*/
 
 #confirm-selection {   
     margin-top: 3%;   
@@ -219,8 +240,6 @@
     grid-area: ft;
 }
 
-
-
 #first-selection {
     background-color: aqua;
 }
@@ -241,3 +260,32 @@
     background-color: olivedrab;
 }
 
+/************** Order selection *****************/ 
+
+.order-selection {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    
+}
+
+.order-flex-section {
+    margin-left: 0;
+    margin-bottom: 10%;
+}
+
+#btns {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+#text {
+    
+}
+
+.order-content {
+    width: 30%;
+}
