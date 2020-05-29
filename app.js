@@ -21,3 +21,14 @@ function selectionDel(selector) {
         }
     } 
 }
+
+
+function btnContinue() {
+    var x = 
+
+
+}
+
+function btnConfirm() {
+
+}
