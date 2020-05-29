@@ -76,4 +76,11 @@ function storeData(n, selector) {
 }
 
 // after this ^^
-function btnConfirm() {}
+function btnConfirm() {
+    var tableNumber = document.getElementById('table-number').value
+
+    if ((tableNumber > 0) && (tableNumber != '')) {
+        order.table = tableNumber 
+        console.log('Order Data:', order)
+    } 
+} 
