@@ -35,7 +35,7 @@
 /************** view **************/
 
 #menu-view {                
-    margin-top: 3%;
+    margin-top: 3%; 
     background-color: white;
 }
 
@@ -129,6 +129,9 @@
     background-color: inherit;
 }
 
+.menu-confirm-section * {
+    background-color: inherit;
+}
 
 /************* second *************/
 
@@ -288,4 +291,18 @@
 
 .order-content {
     width: 30%;
+} 
+
+/************** Btns *****************/ 
+
+.btn-advance {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 15%;
+    padding-right: 15%;
 }
+
+.btn-advance-wrap {
+
+} 
+
