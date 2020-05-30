@@ -66,7 +66,7 @@ function storeData(n, selector) {
                     break;
                 case 'drinks':
                     order.drinks.push(dish)
-                    break;
+                    break; 
             }
         } 
     }
