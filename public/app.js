@@ -82,5 +82,10 @@ function btnConfirm() {
     if ((tableNumber > 0) && (tableNumber != '')) {
         order.table = tableNumber 
         console.log('Order Data:', order)
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.open('POST', '/', true)
+        xhttp.setRequestHeader('Content-type', 'application/json')
+        xhttp.send(JSON.stringify(order))
     } 
 } 
