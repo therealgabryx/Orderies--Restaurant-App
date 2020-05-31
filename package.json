@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/therealgabryx/restaurantApp#readme",
   "dependencies": {
+    "assert": "^2.0.0",
     "axios": "^0.19.2",
     "express": "^4.17.1",
     "mongodb": "^3.5.8"

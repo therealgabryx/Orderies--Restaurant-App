@@ -30,17 +30,22 @@ function selectionDel(selector) {
 
 function btnContinue(selector) {
     // could be drinks, dessert, second || first
+
     switch (selector) {
         case 'first':
+            order.first = []
             storeData(5, selector);
             break;
         case 'second':
+            order.second = []
             storeData(5, selector);
             break;
         case 'dessert':
+            order.dessert = []
             storeData(5, selector);
             break;
         case 'drinks':
+            order.drinks = []
             storeData(6, selector);
             break;
     }
