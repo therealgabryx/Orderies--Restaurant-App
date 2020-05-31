@@ -48,13 +48,13 @@ app.post('/', (request, response) => {
 app.get('/orders', (req, res, next) => {
     mongoClient.connect(uri, (err, client) => {
         var cursor = client.db('restaurantApp').collection('db_orders').find()
-    
+        
+
         cursor.each((err, data) => {
-            console.log('\n', JSON.stringify(data))
+            let order = JSON.parse(JSON.stringify(data))
+            console.log(order) 
         }) 
     })
 
     // return html of orders 
 })
-
-
