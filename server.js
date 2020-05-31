@@ -31,26 +31,30 @@ app.post('/', (request, response) => {
     order = JSON.parse(JSON.stringify(request.body))
     console.log('\nPOST successful:\n', order)
 
-    const filter = {};
-
     /* Database Storing */
     mongoClient.connect(uri, (err, client) => {
         console.log('\nMongoDB connected\n')
         assert.equal(null, err)
-        /* const coll = client.db('restaurantApp').collection('db_orders'); */
-        client.db('restaurantApp').collection('db_orders').insertOne(order, () => {
+
+        const dbOrders = client.db('restaurantApp').collection('db_orders'); 
+        dbOrders.insertOne(order, () => {
             assert.equal(null, err)
             console.log('+ Item Inserted\n')
             client.close();
-        })
+        }) 
     });
 });
 
 app.get('/orders', (req, res, next) => {
+    mongoClient.connect(uri, (err, client) => {
+        var cursor = client.db('restaurantApp').collection('db_orders').find()
+    
+        cursor.each((err, data) => {
+            console.log('\n', JSON.stringify(data))
+        }) 
+    })
 
+    // return html of orders 
 })
 
-/* mongoClient.connect(uri, (err, db) => {
-    console.log('\nConnected to datacluster-t5wqs.mongodb.net\n')
-    db.close()
-}) */
+
