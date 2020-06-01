@@ -78,7 +78,7 @@ function updateView(orders) {
             
             if (i == 0) {
                 output.innerHTML = outstring
-            } else {
+            } else { 
                 output.innerHTML += outstring
             }
         }
@@ -89,4 +89,13 @@ function updateView(orders) {
         + '<p class="mb-0">All orders have been processed! Go read a book while you wait!</p>'
         + '</div>'
     }  
+    socket.emit('viewing-orders', 'viewing-orders, +1')
 }
+
+window.onunload = () => {
+    socket.emit('closing-orders', 'closing-orders, -1')
+} 
+
+socket.on('new-order', (data) => {
+    updateView(orders); 
+}) 
