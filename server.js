@@ -23,6 +23,7 @@ const server = app.listen(port, () => {
 });
 
 /* static files */
+app.use(express.json());
 app.use(express.static('public'));
 
 // Socket setup
@@ -86,7 +87,7 @@ app.get('/db_orders_fetch', (req, res, next) => {
             assert.equal(null, err);
 
             client.db('restaurantApp').collection('db_orders').find().toArray().then((data) => {
-                console.log(data)
+                console.log('Data Sent to Client\n');
                 res.send(data)
                 client.close();
             });    
