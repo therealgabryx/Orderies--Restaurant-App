@@ -69,6 +69,7 @@ app.post('/', (req, res) => {
             if (viewingOrders > 0) {
                 orders = []
                 orders.push(order)
+                io.sockets.emit('new-order', orders)
                 /* io.broadcast.emit('new-order', orders)  */
             } 
 
@@ -96,13 +97,13 @@ app.get('/orders/', (req, res, next) => {
 
 app.get('/db_orders_fetch', (req, res, next) => {
     /* Database Query */
-    var orders = []
     mongoClient.connect(uri, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     }, (err, client) => {
-        console.log('\nMongoDB connected\n');
+        console.log('\nMongoDB connecting\n');
         assert.equal(null, err);
+        console.log('\nMongoDB connected\n');
 
         client.db('restaurantApp').collection('db_orders').find().toArray().then((data) => {
             console.log('Data Sent to Client\n');
