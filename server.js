@@ -28,17 +28,27 @@ app.use(express.static('public'));
 
 // Socket setup
 const io = socket(server);
+var viewingOrders = 0
 
 io.on('connection', (socket) => {
     console.log('Socket connection established, Socket ID:', socket.id);
 
-    /* socket.on('chat', (data) => {
-          io.sockets.emit('chat', data) 
-      })
+    socket.on('viewing-orders', (data) => {
+        viewingOrders++
+        console.log(data, 'viewing now:', viewingOrders)
+    })
 
-      socket.on('typing', (data) => {
-          socket.broadcast.emit('typing', data) 
-      }) */
+    socket.on('closing-orders', (data) => {
+        if (viewingOrders > 0) {
+            viewingOrders--
+        }
+        console.log(data, 'viewing now:', viewingOrders)
+    })
+
+    /* socket.on('typing', (data) => {
+         socket.broadcast.emit('typing', data) 
+         io.sockets.emit('chat', data)  
+     }) */
 });
 
 /* Listen for post requests on '/' */
@@ -55,6 +65,13 @@ app.post('/', (req, res) => {
         (err, client) => {
             console.log('\nMongoDB connected\n');
             assert.equal(null, err);
+
+            if (viewingOrders > 0) {
+                orders = []
+                orders.push(order)
+                io.sockets.emit('new-order', orders)
+                /* io.broadcast.emit('new-order', orders)  */
+            } 
 
             const dbOrders = client.db('restaurantApp').collection('db_orders');
             dbOrders.insertOne(order, () => {
@@ -80,17 +97,18 @@ app.get('/orders/', (req, res, next) => {
 
 app.get('/db_orders_fetch', (req, res, next) => {
     /* Database Query */
+    mongoClient.connect(uri, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }, (err, client) => {
+        console.log('\nMongoDB connecting\n');
+        assert.equal(null, err);
+        console.log('\nMongoDB connected\n');
 
-    var orders = []
-    mongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {
-            console.log('\nMongoDB connected\n');
-            assert.equal(null, err);
-
-            client.db('restaurantApp').collection('db_orders').find().toArray().then((data) => {
-                console.log('Data Sent to Client\n');
-                res.send(data)
-                client.close();
-            });    
+        client.db('restaurantApp').collection('db_orders').find().toArray().then((data) => {
+            console.log('Data Sent to Client\n');
+            res.send(data)
+            client.close();
+        });
     });
 });
-
