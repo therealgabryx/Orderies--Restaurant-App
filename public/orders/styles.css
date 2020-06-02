@@ -1,19 +1,39 @@
-body {
-    font-family: sans-serif, /* Safari for macOS and iOS (San Francisco) */
-    -apple-system, /* Chrome < 56 for macOS (San Francisco) */
-    BlinkMacSystemFont, /* Windows */
-    "Segoe UI", /* Android */
-    "Roboto", /* Basic web fallback */
-    "Helvetica Neue", Arial, sans-serif, /* Emoji fonts */
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+.list-name {
+    background-color: #f8f9fa; 
+    border: none;
 }
 
 #header {
-    width: 80%;
-    margin: 4%;
+    margin-top: 2%;
 }
 
-#container {
-    height: 100vh;
-    justify-content: center;
+#button {
+    margin-bottom: 3%;
+} 
+
+#footer {
+    padding: 5% 2%;
 }
+
+#hd-container {
+    padding-left: 2%;
+    padding-top: 2%;
+}
+
+@media only screen and (max-width: 600px) {
+    #header {
+        margin-top: 25%;
+    }
+
+    #button {
+        margin-bottom: 10%;
+    } 
+
+    #footer {
+        padding: 15% 5%;
+    }
+
+    #hd-container {
+        padding-left: 5%;
+    }
+} 

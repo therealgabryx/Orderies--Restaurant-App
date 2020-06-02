@@ -4,18 +4,40 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js">
-    </script>
-    <script defer src="script.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js">
+    </script>
+    <script defer src="script.js"></script>
     <title>Document</title>
 </head>
 
 <body>
-    <div id="header">
-        <h3><strong>Orders</strong></h3>
+    <nav class="navbar fixed-top navbar-dark bg-primary">
+        <a class="navbar-brand justify-content-start" href="#">
+            <img src="../menu/assets/imgs/food.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+            RestaurantApp
+        </a>
+
+        <ul class="nav justify-content-end">
+            <li class="nav-item active">
+                <a class="nav-link text-white" href="#">Menu<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#">Orders</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="jumbotron jumbotron-fluid" id="header">
+        <div id="hd-container"><h2 class="display-5">Orders</h1></div>
     </div>
     <div id="container">
         <div class="d-flex justify-content-center">

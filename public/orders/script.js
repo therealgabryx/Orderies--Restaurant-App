@@ -33,7 +33,7 @@ function updateView(orders, usingSocket) {
     if (usingSocket) {
         socket.emit('socket-update', 'socket-update, +1')
 
-        header.innerHTML = `<h3><strong>Orders (${orders.length})</strong></h3>`
+        header.innerHTML = `<div id="hd-container"><h2 class="display-5">Orders (${orders.length})</h1></div>`
         
             let outstring = '<div class="jumbotron shadow p-3 mb-5 bg-light rounded">'
             outstring += `<h5><strong>Order ID: </strong>${orders[0]._id}</h5>` +
@@ -44,7 +44,7 @@ function updateView(orders, usingSocket) {
 
             if (orders[0].first.length > 0) {
                 outstring += '<ul class="list-group">' +
-                    `<li class="list-group-item d-flex justify-content-between align-items-center"><strong>First</strong></li>`
+                    `<li class="list-group-item d-flex justify-content-between align-items-center"><div class="list-name"><strong>First</strong></div></li>`
                 for (let j = 0; j < orders[0].first.length; j++) {
                     outstring += `<li class="list-group-item d-flex justify-content-between align-items-center">${orders[0].first[j].name}
                     <span class="badge badge-primary badge-pill">${orders[0].first[j].quantity}</span></li>`
@@ -97,7 +97,9 @@ function updateView(orders, usingSocket) {
 
     } else {
         if (orders.length != 0) {
-            header.innerHTML = `<h3><strong>Orders (${orders.length})</strong></h3>`
+
+            header.innerHTML = `<div id="hd-container"><h2 class="display-5">Orders (${orders.length})</h1></div>`
+
             for (let i = 0; i < orders.length; i++) {
                 let outstring = '<div class="jumbotron shadow p-3 mb-5 bg-light rounded">'
                 outstring += `<h5><strong>Order ID: </strong>${orders[i]._id}</h5>` +
