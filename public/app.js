@@ -6,17 +6,11 @@ window.onload = () => {
 }
 
 function scrollToTop() {
-    /* document.getElementById('overlay').style.display = "true" */
-
-    window.scroll({
+        window.scroll({
         top: 0,
         left: 0,
         behavior: 'auto'
     });
-
-    /* setInterval(() => {
-        document.getElementById('overlay').style.display = "none"
-    }, 600); */
 }
 
 var order = {
