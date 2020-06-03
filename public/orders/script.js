@@ -44,7 +44,7 @@ function updateView(orders, usingSocket) {
 
             if (orders[0].first.length > 0) {
                 outstring += '<ul class="list-group">' +
-                    `<li class="list-group-item d-flex justify-content-between align-items-center"><div class="list-name"><strong>First</strong></div></li>`
+                    `<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #f8f9fa; border: none;"><strong>First</strong></li>`
                 for (let j = 0; j < orders[0].first.length; j++) {
                     outstring += `<li class="list-group-item d-flex justify-content-between align-items-center">${orders[0].first[j].name}
                     <span class="badge badge-primary badge-pill">${orders[0].first[j].quantity}</span></li>`
@@ -54,7 +54,7 @@ function updateView(orders, usingSocket) {
 
             if (orders[0].second.length > 0) {
                 outstring += '<ul class="list-group">' +
-                    `<li class="list-group-item d-flex justify-content-between align-items-center"><strong>Second</strong></li>`
+                    `<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #f8f9fa; border: none;"><strong>Second</strong></li>`
                 for (let j = 0; j < orders[0].second.length; j++) {
                     outstring += `<li class="list-group-item d-flex justify-content-between align-items-center">${orders[0].second[j].name}
                     <span class="badge badge-primary badge-pill">${orders[0].second[j].quantity}</span></li>`
@@ -64,7 +64,7 @@ function updateView(orders, usingSocket) {
 
             if (orders[0].dessert.length > 0) {
                 outstring += '<ul class="list-group">' +
-                    `<li class="list-group-item d-flex justify-content-between align-items-center"><strong>Dessert</strong></li>`
+                    `<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #f8f9fa; border: none;"><strong>Dessert</strong></li>`
                 for (let j = 0; j < orders[0].dessert.length; j++) {
                     outstring += `<li class="list-group-item d-flex justify-content-between align-items-center">${orders[0].dessert[j].name}
                     <span class="badge badge-primary badge-pill">${orders[0].dessert[j].quantity}</span></li>`
@@ -74,7 +74,7 @@ function updateView(orders, usingSocket) {
 
             if (orders[0].drinks.length > 0) {
                 outstring += '<ul class="list-group">' +
-                    `<li class="list-group-item d-flex justify-content-between align-items-center"><strong>Drinks</strong></li>`
+                    `<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #f8f9fa; border: none;"><strong>Drinks</strong></li>`
                 for (let j = 0; j < orders[0].drinks.length; j++) {
                     outstring += `<li class="list-group-item d-flex justify-content-between align-items-center">${orders[0].drinks[j].name}
                     <span class="badge badge-primary badge-pill">${orders[0].drinks[j].quantity}</span></li>`
@@ -110,7 +110,7 @@ function updateView(orders, usingSocket) {
 
                 if (orders[i].first.length > 0) {
                     outstring += '<ul class="list-group">' +
-                        `<li class="list-group-item d-flex justify-content-between align-items-center"><strong>First</strong></li>`
+                        `<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #f8f9fa; border: none;"><strong>First</strong></li>`
                     for (let j = 0; j < orders[i].first.length; j++) {
                         outstring += `<li class="list-group-item d-flex justify-content-between align-items-center">${orders[i].first[j].name}
                         <span class="badge badge-primary badge-pill">${orders[i].first[j].quantity}</span></li>`
@@ -120,7 +120,7 @@ function updateView(orders, usingSocket) {
 
                 if (orders[i].second.length > 0) {
                     outstring += '<ul class="list-group">' +
-                        `<li class="list-group-item d-flex justify-content-between align-items-center"><strong>Second</strong></li>`
+                        `<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #f8f9fa; border: none;"><strong>Second</strong></li>`
                     for (let j = 0; j < orders[i].second.length; j++) {
                         outstring += `<li class="list-group-item d-flex justify-content-between align-items-center">${orders[i].second[j].name}
                         <span class="badge badge-primary badge-pill">${orders[i].second[j].quantity}</span></li>`
@@ -130,7 +130,7 @@ function updateView(orders, usingSocket) {
 
                 if (orders[i].dessert.length > 0) {
                     outstring += '<ul class="list-group">' +
-                        `<li class="list-group-item d-flex justify-content-between align-items-center"><strong>Dessert</strong></li>`
+                        `<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #f8f9fa; border: none;"><strong>Dessert</strong></li>`
                     for (let j = 0; j < orders[i].dessert.length; j++) {
                         outstring += `<li class="list-group-item d-flex justify-content-between align-items-center">${orders[i].dessert[j].name}
                         <span class="badge badge-primary badge-pill">${orders[i].dessert[j].quantity}</span></li>`
@@ -140,7 +140,7 @@ function updateView(orders, usingSocket) {
 
                 if (orders[i].drinks.length > 0) {
                     outstring += '<ul class="list-group">' +
-                        `<li class="list-group-item d-flex justify-content-between align-items-center"><strong>Drinks</strong></li>`
+                        `<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #f8f9fa; border: none;"><strong>Drinks</strong></li>`
                     for (let j = 0; j < orders[i].drinks.length; j++) {
                         outstring += `<li class="list-group-item d-flex justify-content-between align-items-center">${orders[i].drinks[j].name}
                         <span class="badge badge-primary badge-pill">${orders[i].drinks[j].quantity}</span></li>`
