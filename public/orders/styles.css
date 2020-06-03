@@ -3,6 +3,15 @@
     border: none;
 }
 
+html, body {
+    min-height: 100%;
+}
+
+#menu-container {
+    margin: 0;
+    min-height: 100%;
+}
+
 #header {
     margin-top: 2%;
 }

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js">
+    </script>
+    <script defer src="menu.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="menu.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar fixed-top navbar-dark bg-primary">
+        <a class="navbar-brand justify-content-start" href="#">
+            <img src="assets/imgs/food.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+            RestaurantApp
+        </a>
+
+        <ul class="nav justify-content-end">
+            <li class="nav-item active">
+                <a class="nav-link text-white" href="#">Menu<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#">Orders</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="jumbotron jumbotron-fluid" id="header">
+        <div class="container">
+            <h1 class="display-4">Second dishes</h1>
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at augue ut nisl pellentesque
+                commodo. Praesent ullamcorper felis ut lorem malesuada, eget hendrerit purus facilisis.</p>
+        </div>
+    </div>
+
+    <div class="container" id="button">
+        <p class="lead" style="text-align: center;">Want to take a look back at the menu?</p>
+        <button type="button" class="btn btn-primary btn-lg btn-block" onclick="backToMenu()">Click Here</button>
+    </div>
+
+    <div class="container" id="menu-container" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-evenly;">
+
+        <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
+            <img src="assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+            <div class="card-body" style="text-align: center;">
+                <h5 class="card-title" style="margin: 0;" id="second-text1">Polpette al sugo</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-around; align-items: center;">
+                        <div><button type="button" class="order-button btn btn-primary" class="btn-del" onclick="selectionDel('second-selection1')">-</button></div>
+                        <div><span class="order-quantity" id="second-selection1">-</span></div>
+                        <div><button type="button" class="order-button btn btn-primary" class="btn-add" onclick="selectionAdd('second-selection1')">+</button></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
+            <img src="assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+            <div class="card-body" style="text-align: center;">
+                <h5 class="card-title" style="margin: 0;" id="second-text2">Parmigiana di melanzane</h5>
+            </div>  
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-around; align-items: center;">
+                        <div><button type="button" class="order-button btn btn-primary" class="btn-del" onclick="selectionDel('second-selection2')">-</button></div>
+                        <div><span class="order-quantity" id="second-selection2">-</span></div>
+                        <div><button type="button" class="order-button btn btn-primary" class="btn-add" onclick="selectionAdd('second-selection2')">+</button></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
+            <img src="assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+            <div class="card-body" style="text-align: center;">
+                <h5 class="card-title" style="margin: 0;" id="second-text3">Pollo alle mandorle</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-around; align-items: center;">
+                        <div><button type="button" class="order-button btn btn-primary" class="btn-del" onclick="selectionDel('second-selection3')">-</button></div>
+                        <div><span class="order-quantity" id="second-selection3">-</span></div>
+                        <div><button type="button" class="order-button btn btn-primary" class="btn-add" onclick="selectionAdd('second-selection3')">+</button></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
+            <img src="assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+            <div class="card-body" style="text-align: center;">
+                <h5 class="card-title" style="margin: 0;" id="second-text4">Pollo al curry</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-around; align-items: center;">
+                        <div><button type="button" class="order-button btn btn-primary" class="btn-del" onclick="selectionDel('second-selection4')">-</button></div>
+                        <div><span class="order-quantity" id="second-selection4">-</span></div>
+                        <div><button type="button" class="order-button btn btn-primary" class="btn-add" onclick="selectionAdd('second-selection4')">+</button></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
+            <img src="assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+            <div class="card-body" style="text-align: center;">
+                <h5 class="card-title" style="margin: 0;" id="second-text5">Brasato al barolo</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-around; align-items: center;">
+                        <div><button type="button" class="order-button btn btn-primary" class="btn-del" onclick="selectionDel('second-selection5')">-</button></div>
+                        <div><span class="order-quantity" id="second-selection5">-</span></div>
+                        <div><button type="button" class="order-button btn btn-primary" class="btn-add" onclick="selectionAdd('second-selection5')">+</button></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+
+    <div class="container" style="margin-bottom: 10%; margin-top: 10%;">
+        <!-- <p class="lead" style="text-align: center;">..</p> -->
+        <button type="button" class="btn btn-primary btn-lg btn-block" onclick="btnContinue('second')">Continue</button>
+    </div>
+    
+    <div class="bg-dark text-secondary" style="margin-bottom: 0;">
+        <div class="container" id="footer">
+            <p style="margin-bottom: 0;">Some kinda footer I guess</p>
+        </div>
+    </div>
+</body>
+
+</html>

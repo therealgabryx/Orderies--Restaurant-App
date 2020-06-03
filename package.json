@@ -24,7 +24,7 @@
     "mongodb": "^3.5.8",
     "socket.io": "^2.3.0"
   },
-  "devDependencies": {
+  "devDependencies": { 
     "dotenv": "^8.2.0",
     "nodemon": "^2.0.4"
   }

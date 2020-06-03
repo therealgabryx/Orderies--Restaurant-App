@@ -43,12 +43,7 @@ io.on('connection', (socket) => {
             viewingOrders--
         }
         console.log(data, 'viewing now:', viewingOrders)
-    })
-
-    /* socket.on('typing', (data) => {
-         socket.broadcast.emit('typing', data) 
-         io.sockets.emit('chat', data)  
-     }) */
+    }) 
 });
 
 /* Listen for post requests on '/' */

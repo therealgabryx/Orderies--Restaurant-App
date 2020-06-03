@@ -7,492 +7,267 @@
     <title>Restaurant App</title>
     <!-- <link rel="stylesheet" type="text/css" href="styles/webfontkit/stylesheet.css"> -->
     <link rel="stylesheet" type="text/css" href="styles/styles.css">
-    <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js">
+    </script>
     <script defer type="text/javascript" src="app.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <div class="menu-section" id="menu-view">
-            <!-- view -->
-            <div class="menu-view-section" id="view-header">
-                <div id="menu-title">Restaurant Selection</div>
-            </div>
-            <div class="menu-view-section" id="view-content">
-                <div class="menu-component" id="first-section">
-                    <!-- primi piatti posizione sx -->
-                    <h2>First</h2>
-                    <div class="section-flex">
-                        <div class="left">
-                            <ul class="nobullet">
-                                <li>Pasta alla carbonara</li>
-                                <li>Pasta al ragù</li>
-                                <li>Lasagne</li>
-                                <li>Tris di canederli</li>
-                                <li>Spätzle</li>
-                            </ul>
-                        </div>
-                        <div class="right">
-                            <!-- prezzi indentati a destra -->
-                            <ul class="nobullet">
-                                <li>€ 7,50</li>
-                                <li>€ 6,50</li>
-                                <li>€ 7,00</li>
-                                <li>€ 5,90</li>
-                                <li>€ 7,50</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu-component" id="second-section">
-                    <!-- secondi piatti posizione sx -->
-                    <h2>Second</h2>
-                    <div class="section-flex">
-                        <div class="left">
-                            <ul class="nobullet">
-                                <li>Polpette al sugo</li>
-                                <li>Parmigiana di melanzane</li>
-                                <li>Pollo alle mandorle</li>
-                                <li>Pollo al curry</li>
-                                <li>Brasato al barolo</li>
-                            </ul>
-                        </div>
-                        <div class="right">
-                            <!-- prezzi indentati a destra -->
-                            <ul class="nobullet">
-                                <li>€ 7,50</li>
-                                <li>€ 6,50</li>
-                                <li>€ 7,00</li>
-                                <li>€ 5,90</li>
-                                <li>€ 7,50</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu-component" id="dessert-section">
-                    <!-- dessert posizione sx -->
-                    <h2>Dessert</h2>
-                    <div class="section-flex">
-                        <div class="left">
-                            <ul class="nobullet">
-                                <li>Tiramisù</li>
-                                <li>Crema Catalana</li>
-                                <li>Semifreddo al caffè</li>
-                                <li>Crème caramel</li>
-                                <li>Panna cotta con fragole</li>
-                            </ul>
-                        </div>
-                        <div class="right">
-                            <!-- prezzi indentati a destra -->
-                            <ul class="nobullet">
-                                <li>€ 7,50</li>
-                                <li>€ 6,50</li>
-                                <li>€ 7,00</li>
-                                <li>€ 5,90</li>
-                                <li>€ 7,50</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu-component" id="drinks-section">
-                    <!-- drinks posizione sx -->
-                    <h2>Drinks</h2>
-                    <div class="section-flex">
-                        <div class="left">
-                            <ul class="nobullet">
-                                <li>Birre</li>
-                                <ul>
-                                    <li>Bionda</li>
-                                    <li>Doppio malto</li>
-                                </ul>
+    <nav class="navbar fixed-top navbar-dark bg-primary">
+        <a class="navbar-brand justify-content-start" href="#">
+            <img src="menu/assets/imgs/food.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+            RestaurantApp
+        </a>
 
-                                <li>Vini</li>
-                                <ul>
-                                    <li>Teroldego</li>
-                                    <li>Pinot Grigio</li>
-                                </ul>
+        <ul class="nav justify-content-end">
+            <li class="nav-item active">
+                <a class="nav-link text-white" href="/">Menu<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/orders/">Orders</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </a>
+            </li>
+        </ul>
+    </nav>
 
-                                <li>Acqua 1/2l</li>
-                                <li>Analcolici 33cl</li>
-                            </ul>
-                        </div>
-                        <div class="right">
-                            <!-- prezzi indentati a destra -->
-                            <ul class="nobullet">
-                                <br>
-                                <li>€ 7,50</li>
-                                <li>€ 6,50</li>
-                                <br>
-                                <li>€ 7,00</li>
-                                <li>€ 5,90</li>
-                                <li>€ 7,50</li>
-                                <li>€ 7,50</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+    <div id="menu-container">   
+    
+        <div class=" jumbotron jumbotron-fluid" id="header">
+            <div class="container">
+                <h1 class="display-4">Our Selection</h1>
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at augue ut nisl pellentesque
+                    commodo. Praesent ullamcorper felis ut lorem malesuada, eget hendrerit purus facilisis.</p>
             </div>
-            <div class="menu-view-section" id="view-footer">footer</div>
         </div>
 
-        <!--------------------------------------------------------------------------------------------------------->
-        <!--------------------------------------------- 1st SELECTION --------------------------------------------->
-        <!--------------------------------------------------------------------------------------------------------->
-
-        <div class="menu-section" id="first-selection">
-            <div class="menu-first-section" id="first-header">
-                <div>First Selection</div>
-            </div>
-            <div class="menu-first-section" id="first-content">
-                <!-- content -->
-                <!-- form: first selection -->
-                <form name="firstSelectionForm" id="firstSelectionForm" method="POST">
-                    <div class="order-selection">
-                        <div class="order-flex-section" id="qty">
-                            <span class="order-quantity" id="first-selection1">-</span>
-                        </div>
-                        <div class="order-flex-section">
-                            <span class="order-content" id="first-text1">Pasta alla carbonara</span>
-                        </div>
-                        <div class="order-flex-section" id="btns">
-                            <button type="button" class="order-button" class="btn-add" onclick="selectionAdd('first-selection1')">+</button>
-                            <button type="button" class="order-button" class="btn-del" onclick="selectionDel('first-selection1')">-</button>
-                        </div>
-                    </div>
-                    <div class="order-selection">
-                        <div class="order-flex-section" id="qty">
-                            <span class="order-quantity" id="first-selection2">-</span>
-                        </div>
-                        <div class="order-flex-section">
-                            <span class="order-content" id="first-text2">Pasta al ragù</span>
-                        </div>
-                        <div class="order-flex-section" id="btns">
-                            <button type="button" class="order-button" class="btn-add" onclick="selectionAdd('first-selection2')">+</button>
-                            <button type="button" class="order-button" class="btn-del" onclick="selectionDel('first-selection2')">-</button>
-                        </div>
-                    </div>
-                    <div class="order-selection">
-                        <div class="order-flex-section" id="qty">
-                            <span class="order-quantity" id="first-selection3">-</span>
-                        </div>
-                        <div class="order-flex-section">
-                            <span class="order-content" id="first-text3">Lasagne</span>
-                        </div>
-                        <div class="order-flex-section" id="btns">
-                            <button type="button" class="order-button" class="btn-add" onclick="selectionAdd('first-selection3')">+</button>
-                            <button type="button" class="order-button" class="btn-del" onclick="selectionDel('first-selection3')">-</button>
-                        </div>
-                    </div>
-                    <div class="order-selection">
-                        <div class="order-flex-section" id="qty">
-                            <span class="order-quantity" id="first-selection4">-</span>
-                        </div>
-                        <div class="order-flex-section">
-                            <span class="order-content" id="first-text4">Tris di canederli</span>
-                        </div>
-                        <div class="order-flex-section" id="btns">
-                            <button type="button" class="order-button" class="btn-add" onclick="selectionAdd('first-selection4')">+</button>
-                            <button type="button" class="order-button" class="btn-del" onclick="selectionDel('first-selection4')">-</button>
-                        </div>
-                    </div>
-                    <div class="order-selection">
-                        <div class="order-flex-section" id="qty">
-                            <span class="order-quantity" id="first-selection5">-</span>
-                        </div>
-                        <div class="order-flex-section">
-                            <span class="order-content" id="first-text5">Spätzle</span>
-                        </div>
-                        <div class="order-flex-section" id="btns">
-                            <button type="button" class="order-button" class="btn-add" onclick="selectionAdd('first-selection5')">+</button>
-                            <button type="button" class="order-button" class="btn-del" onclick="selectionDel('first-selection5')">-</button>
-                        </div>
-                    </div>
-                </form>
-                <div class="btn-advance-wrap" id="btn-first">
-                    <button type="button" class="btn-advance" onclick="btnContinue('first')">continue</button>
-                </div>
-            </div>
-            <div class="menu-first-section" id="first-footer">footer</div>
+        <div class="container" id="button">
+            <p class="lead" style="text-align: center;">Didn't order anything yet?</p>
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="startOrderSelection()">Click
+                Here</button>
         </div>
 
-        <!--------------------------------------------------------------------------------------------------------->
-        <!--------------------------------------------- 2nd SELECTION --------------------------------------------->
-        <!--------------------------------------------------------------------------------------------------------->
+        <div class="container">
+            <!-- first dishes -->
+            <div class="jumbotron">
+                <h1 class="display-5">First dishes</h1>
+                <hr class="my-4">
+                <div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Pasta alla carbonara</div>
+                                <div>€ 7,50</div>
+                            </div>
+                        </li>
 
-        <div class="menu-section" id="second-selection">
-            <div class="menu-second-section" id="second-header">
-                <div>Second Selection</div>
-            </div>
-            <div class="menu-second-section" id="second-content">
-                <!-- content -->
-                <!-- form: second selection -->
-                <form name="secondSelectionForm" method="POST">
-                    <div class="order-selection">
-                        <div class="order-flex-section" id="qty">
-                            <span class="order-quantity" id="second-selection1">-</span>
-                        </div>
-                        <div class="order-flex-section">
-                            <span class="order-content" id="second-text1">Polpette al sugo</span>
-                        </div>
-                        <div class="order-flex-section" id="btns">
-                            <button type="button" class="order-button" class="btn-add" onclick="selectionAdd('second-selection1')">+</button>
-                            <button type="button" class="order-button" class="btn-del" onclick="selectionDel('second-selection1')">-</button>
-                        </div>
-                    </div>
-                    <div class="order-selection">
-                        <div class="order-flex-section" id="qty">
-                            <span class="order-quantity" id="second-selection2">-</span>
-                        </div>
-                        <div class="order-flex-section">
-                            <span class="order-content" id="second-text2">Parmigiana di melanzane</span>
-                        </div>
-                        <div class="order-flex-section" id="btns">
-                            <button type="button" class="order-button" class="btn-add" onclick="selectionAdd('second-selection2')">+</button>
-                            <button type="button" class="order-button" class="btn-del" onclick="selectionDel('second-selection2')">-</button>
-                        </div>
-                    </div>
-                    <div class="order-selection">
-                        <div class="order-flex-section" id="qty">
-                            <span class="order-quantity" id="second-selection3">-</span>
-                        </div>
-                        <div class="order-flex-section">
-                            <span class="order-content" id="second-text3">Pollo alle mandorle</span>
-                        </div>
-                        <div class="order-flex-section" id="btns">
-                            <button type="button" class="order-button" class="btn-add" onclick="selectionAdd('second-selection3')">+</button>
-                            <button type="button" class="order-button" class="btn-del" onclick="selectionDel('second-selection3')">-</button>
-                        </div>
-                    </div>
-                    <div class="order-selection">
-                        <div class="order-flex-section" id="qty">
-                            <span class="order-quantity" id="second-selection4">-</span>
-                        </div>
-                        <div class="order-flex-section">
-                            <span class="order-content" id="second-text4">Pollo al curry</span>
-                        </div>
-                        <div class="order-flex-section" id="btns">
-                            <button type="button" class="order-button" class="btn-add" onclick="selectionAdd('second-selection4')">+</button>
-                            <button type="button" class="order-button" class="btn-del" onclick="selectionDel('second-selection4')">-</button>
-                        </div>
-                    </div>
-                    <div class="order-selection">
-                        <div class="order-flex-section" id="qty">
-                            <span class="order-quantity" id="second-selection5">-</span>
-                        </div>
-                        <div class="order-flex-section">
-                            <span class="order-content" id="second-text5">Brasato al barolo</span>
-                        </div>
-                        <div class="order-flex-section" id="btns">
-                            <button type="button" class="order-button" class="btn-add" onclick="selectionAdd('second-selection5')">+</button>
-                            <button type="button" class="order-button" class="btn-del" onclick="selectionDel('second-selection5')">-</button>
-                        </div>
-                    </div>
-                </form>
-                <div class="btn-advance-wrap" id="btn-second">
-                    <button type="button" class="btn-advance" onclick="btnContinue('second')">continue</button>
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Pasta al ragù</div>
+                                <div>€ 6,50</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Lasagne</div>
+                                <div>€ 7,00</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Tris di canederli</div>
+                                <div>€ 5,90</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Spätzle</div>
+                                <div>€ 7,50</div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="menu-second-section" id="second-footer">footer</div>
+
+            <!-- second dishes -->
+            <div class="jumbotron">
+                <h1 class="display-5">Second dishes</h1>
+                <hr class="my-4">
+                <div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Polpette al sugo</div>
+                                <div>€ 7,50</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Parmigiana di melanzane</div>
+                                <div>€ 6,50</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Pollo alle mandorle</div>
+                                <div>€ 7,00</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Pollo al curry</div>
+                                <div>€ 5,90</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Brasato al barolo</div>
+                                <div>€ 7,50</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- desserts -->
+            <div class="jumbotron">
+                <h1 class="display-5">Desserts</h1>
+                <hr class="my-4">
+                <div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Tiramisù</div>
+                                <div>€ 7,50</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Crema Catalana</div>
+                                <div>€ 6,50</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Semifreddo al caffè</div>
+                                <div>€ 7,00</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Crème caramel</div>
+                                <div>€ 5,90</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Panna cotta con fragole</div>
+                                <div>€ 7,50</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- drinks -->
+            <div class="jumbotron">
+                <h1 class="display-5">Drinks</h1>
+                <hr class="my-4">
+                <div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" style="background-color: #e9ecef; border: none;">
+                            <div class="list-item">
+                                <div>Birre</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Bionda</div>
+                                <div>€ 6,50</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Doppio malto</div>
+                                <div>€ 6,50</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <br>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" style="background-color: #e9ecef; border: none;">
+                            <div class="list-item">
+                                <div>Vini</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Teroldego</div>
+                                <div>€ 6,50</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Pinot Grigio</div>
+                                <div>€ 7,00</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Acqua 1/2l</div>
+                                <div>€ 5,90</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Analcolici 33cl</div>
+                                <div>€ 7,50</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
 
-        <!--------------------------------------------------------------------------------------------------------->
-        <!------------------------------------------- dessert SELECTION ------------------------------------------->
-        <!--------------------------------------------------------------------------------------------------------->
-
-        <div class="menu-section" id="dessert-selection">
-            <div class="menu-dessert-section" id="dessert-header">
-                <div>Dessert Selection</div>
-            </div>
-            <div class="menu-dessert-section" id="dessert-content">
-                <!-- content -->
-                <!-- form: dessert selection -->
-                <form name="dessertSelectionForm" method="POST">
-                    <div class="order-selection">
-                        <div class="order-flex-section" id="qty">
-                            <span class="order-quantity" id="dessert-selection1">-</span>
-                        </div>
-                        <div class="order-flex-section">
-                            <span class="order-content" id="dessert-text1">Tiramisù</span>
-                        </div>
-                        <div class="order-flex-section" id="btns">
-                            <button type="button" class="order-button" class="btn-add" onclick="selectionAdd('dessert-selection1')">+</button>
-                            <button type="button" class="order-button" class="btn-del" onclick="selectionDel('dessert-selection1')">-</button>
-                        </div>
-                    </div>
-                    <div class="order-selection">
-                        <div class="order-flex-section" id="qty">
-                            <span class="order-quantity" id="dessert-selection2">-</span>
-                        </div>
-                        <div class="order-flex-section">
-                            <span class="order-content" id="dessert-text2">Crema Catalana</span>
-                        </div>
-                        <div class="order-flex-section" id="btns">
-                            <button type="button" class="order-button" class="btn-add" onclick="selectionAdd('dessert-selection2')">+</button>
-                            <button type="button" class="order-button" class="btn-del" onclick="selectionDel('dessert-selection2')">-</button>
-                        </div>
-                    </div>
-                    <div class="order-selection">
-                        <div class="order-flex-section" id="qty">
-                            <span class="order-quantity" id="dessert-selection3">-</span>
-                        </div>
-                        <div class="order-flex-section">
-                            <span class="order-content" id="dessert-text3">Semifreddo al caffè</span>
-                        </div>
-                        <div class="order-flex-section" id="btns">
-                            <button type="button" class="order-button" class="btn-add" onclick="selectionAdd('dessert-selection3')">+</button>
-                            <button type="button" class="order-button" class="btn-del" onclick="selectionDel('dessert-selection3')">-</button>
-                        </div>
-                    </div>
-                    <div class="order-selection">
-                        <div class="order-flex-section" id="qty">
-                            <span class="order-quantity" id="dessert-selection4">-</span>
-                        </div>
-                        <div class="order-flex-section">
-                            <span class="order-content" id="dessert-text4">Crème caramel</span>
-                        </div>
-                        <div class="order-flex-section" id="btns">
-                            <button type="button" class="order-button" class="btn-add" onclick="selectionAdd('dessert-selection4')">+</button>
-                            <button type="button" class="order-button" class="btn-del" onclick="selectionDel('dessert-selection4')">-</button>
-                        </div>
-                    </div>
-                    <div class="order-selection">
-                        <div class="order-flex-section" id="qty">
-                            <span class="order-quantity" id="dessert-selection5">-</span>
-                        </div>
-                        <div class="order-flex-section">
-                            <span class="order-content" id="dessert-text5">Panna cotta con fragole</span>
-                        </div>
-                        <div class="order-flex-section" id="btns">
-                            <button type="button" class="order-button" class="btn-add" onclick="selectionAdd('dessert-selection5')">+</button>
-                            <button type="button" class="order-button" class="btn-del" onclick="selectionDel('dessert-selection5')">-</button>
-                        </div>
-                    </div>
-                </form>
-                <div class="btn-advance-wrap" id="btn-dessert">
-                    <button type="button" class="btn-advance" onclick="btnContinue('dessert')">continue</button>
-                </div>
-            </div>
-            <div class="menu-dessert-section" id="dessert-footer">footer</div>
+        <div class="container" style="margin-bottom: 10%;">
+            <p class="lead" style="text-align: center;">Didn't order anything yet?</p>
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="startOrderSelection()">Click
+                Here</button>
+        </div>
         </div>
 
-        <!--------------------------------------------------------------------------------------------------------->
-        <!------------------------------------------- drinks SELECTION -------------------------------------------->
-        <!--------------------------------------------------------------------------------------------------------->
-
-        <div class="menu-section" id="drinks-selection">
-            <div class="menu-drinks-section" id="drinks-header">
-                <div>Drinks Selection</div>
+        <div class="bg-dark text-secondary" style="margin-bottom: 0;">
+            <div class="container" id="footer">
+                <p style="margin-bottom: 0;">Some kinda footer I guess</p>
             </div>
-            <div class="menu-drinks-section" id="drinks-content">
-                <!-- content -->
-                <!-- form: drinks selection -->
-                <form name="drinksSelectionForm" method="POST">
-                    <div class="order-selection">
-                        <div class="order-flex-section" id="qty">
-                            <span class="order-quantity" id="drinks-selection1">-</span>
-                        </div>
-                        <div class="order-flex-section">
-                            <span class="order-content" id="drinks-text1">Bionda</span>
-                        </div>
-                        <div class="order-flex-section" id="btns">
-                            <button type="button" class="order-button" class="btn-add" onclick="selectionAdd('drinks-selection1')">+</button>
-                            <button type="button" class="order-button" class="btn-del" onclick="selectionDel('drinks-selection1')">-</button>
-                        </div>
-                    </div>
-                    <div class="order-selection">
-                        <div class="order-flex-section" id="qty">
-                            <span class="order-quantity" id="drinks-selection2">-</span>
-                        </div>
-                        <div class="order-flex-section">
-                            <span class="order-content" id="drinks-text2">Doppio malto</span>
-                        </div>
-                        <div class="order-flex-section" id="btns">
-                            <button type="button" class="order-button" class="btn-add" onclick="selectionAdd('drinks-selection2')">+</button>
-                            <button type="button" class="order-button" class="btn-del" onclick="selectionDel('drinks-selection2')">-</button>
-                        </div>
-                    </div>
-                    <div class="order-selection">
-                        <div class="order-flex-section" id="qty">
-                            <span class="order-quantity" id="drinks-selection3">-</span>
-                        </div>
-                        <div class="order-flex-section">
-                            <span class="order-content" id="drinks-text3">Teroldego</span>
-                        </div>
-                        <div class="order-flex-section" id="btns">
-                            <button type="button" class="order-button" class="btn-add" onclick="selectionAdd('drinks-selection3')">+</button>
-                            <button type="button" class="order-button" class="btn-del" onclick="selectionDel('drinks-selection3')">-</button>
-                        </div>
-                    </div>
-                    <div class="order-selection">
-                        <div class="order-flex-section" id="qty">
-                            <span class="order-quantity" id="drinks-selection4">-</span>
-                        </div>
-                        <div class="order-flex-section">
-                            <span class="order-content" id="drinks-text4">Pinot Grigio</span>
-                        </div>
-                        <div class="order-flex-section" id="btns">
-                            <button type="button" class="order-button" class="btn-add" onclick="selectionAdd('drinks-selection4')">+</button>
-                            <button type="button" class="order-button" class="btn-del" onclick="selectionDel('drinks-selection4')">-</button>
-                        </div>
-                    </div>
-                    <div class="order-selection">
-                        <div class="order-flex-section" id="qty">
-                            <span class="order-quantity" id="drinks-selection5">-</span>
-                        </div>
-                        <div class="order-flex-section">
-                            <span class="order-content" id="drinks-text5">Acqua 1/2l</span>
-                        </div>
-                        <div class="order-flex-section" id="btns">
-                            <button type="button" class="order-button" class="btn-add" onclick="selectionAdd('drinks-selection5')">+</button>
-                            <button type="button" class="order-button" class="btn-del" onclick="selectionDel('drinks-selection5')">-</button>
-                        </div>
-                    </div>
-                    <div class="order-selection">
-                        <div class="order-flex-section" id="qty">
-                            <span class="order-quantity" id="drinks-selection6">-</span>
-                        </div>
-                        <div class="order-flex-section">
-                            <span class="order-content" id="drinks-text6">Analcolici 33cl</span>
-                        </div>
-                        <div class="order-flex-section" id="btns">
-                            <button type="button" class="order-button" class="btn-add" onclick="selectionAdd('drinks-selection6')">+</button>
-                            <button type="button" class="order-button" class="btn-del" onclick="selectionDel('drinks-selection6')">-</button>
-                        </div>
-                    </div>
-                </form>
-                <div class="btn-advance-wrap" id="btn-drinks">
-                    <button type="button" class="btn-advance" onclick="btnContinue('drinks')">continue</button>
-                </div>
-            </div>
-            <div class="menu-drinks-section" id="drinks-footer">footer</div>
-        </div>
-
-        <!--------------------------------------------------------------------------------------------------------->
-        <!------------------------------------------- confirm SELECTION ------------------------------------------->
-        <!--------------------------------------------------------------------------------------------------------->
-
-        <div class="menu-section" id="confirm-selection">
-            <!-- confirm -->
-            <div class="menu-confirm-section" id="confirm-header">confirm section</div>
-            <div class="menu-confirm-section" id="confirm-content">
-                <!-- order recap  #TO-DO -->
-                <div id="order-recap">
-                </div>
-
-                <!-- content confirm selection -->
-                <div id="table-selection">
-                    <label for="table-number">Enter table number:</label><br>
-                    <input type="number" name="table-number" id="table-number">
-                </div>
-
-                <div class="btn-advance-wrap" id="btn-confirm">
-                    <button type="button" class="btn-advance" onclick="btnConfirm()">confirm</button>
-                </div>
-            </div>
-            <div class="menu-confirm-section" id="confirm-footer">footer</div>
         </div>
     </div>
 </body>
 
-</html>  
-<!-- ¯\_(ツ)_/¯ --> 
+</html>
+<!-- ¯\_(ツ)_/¯ -->
