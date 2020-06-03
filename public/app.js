@@ -20,6 +20,8 @@ function scrollToTop() {
 }
 
 var order = {
+    _id: "",
+    time: "",
     first: [],
     second: [],
     dessert: [],
@@ -128,6 +130,17 @@ function display(selector) {
     }
 }
 
+//generates random id;
+let guid = () => {
+    let s4 = () => {
+        return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+    }
+    //return id of format 'aaaaaaaa'-'aaaa'-'aaaa'-'aaaa'-'aaaaaaaaaaaa'
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}
+
 // after this ^^
 function btnConfirm() {
     scrollToTop()
@@ -135,6 +148,10 @@ function btnConfirm() {
 
     if ((tableNumber > 0) && (tableNumber != '')) {
         order.table = tableNumber
+
+        order.time = new Date().toString()
+        order._id = guid()
+
         console.log('Order Data:', order)
 
         /* Ajax POST request */
