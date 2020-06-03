@@ -2,15 +2,21 @@
 var socket = io.connect('http://localhost:3000')
 
 window.onload = () => {
-    scrollToTop() 
+    scrollToTop()
 }
 
 function scrollToTop() {
+    /* document.getElementById('overlay').style.display = "true" */
+
     window.scroll({
         top: 0,
         left: 0,
         behavior: 'smooth'
-     });
+    });
+
+    /* setInterval(() => {
+        document.getElementById('overlay').style.display = "none"
+    }, 600); */
 }
 
 var order = {
@@ -152,11 +158,11 @@ function displayPlaced() {
         <p class="lead">Thanking you in advance for choosing us</p>
     </div>
 </div>` + '<div class="alert alert-success" role="alert" style="margin:5%; border-radius:5px; margin-top:15%; margin-bottom:55%;">' +
-                '<h4 class="alert-heading"><strong>Success!</strong></h4>' +
-                '<hr>' +
-                '<p class="mb-0">Your order has been received and it\'s already on your way!</p>' +
-                '</div>'
-} 
+        '<h4 class="alert-heading"><strong>Success!</strong></h4>' +
+        '<hr>' +
+        '<p class="mb-0">Your order has been received and it\'s already on your way!</p>' +
+        '</div>'
+}
 
 function displaySecond() {
     scrollToTop()
