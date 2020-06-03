@@ -37,7 +37,7 @@ function updateView(orders, usingSocket) {
         
             let outstring = '<div class="jumbotron shadow p-3 mb-5 bg-light rounded">'
             outstring += `<h5><strong>Order ID: </strong>${orders[0]._id}</h5>` +
-                `<h5><strong>timestamp: </strong>00-00-00 00:00:00</h5>` +
+                `<h5><strong>timestamp: </strong> ${orders[0].time} </h5>` +
                 '<hr class="my-3">' +
                 `<h5><strong>Table </strong>${orders[0].table}</h5> ` +
                 '<hr class="my-3">'
@@ -103,7 +103,7 @@ function updateView(orders, usingSocket) {
             for (let i = 0; i < orders.length; i++) {
                 let outstring = '<div class="jumbotron shadow p-3 mb-5 bg-light rounded">'
                 outstring += `<h5><strong>Order ID: </strong>${orders[i]._id}</h5>` +
-                    `<h5><strong>timestamp: </strong>00-00-00 00:00:00</h5>` +
+                    `<h5><strong>timestamp: </strong> ${orders[i].time} </h5>` +
                     '<hr class="my-3">' +
                     `<h5><strong>Table </strong>${orders[i].table}</h5> ` +
                     '<hr class="my-3">'
