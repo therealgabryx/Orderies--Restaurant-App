@@ -2,11 +2,12 @@
 var socket = io.connect('http://localhost:3000')
 
 window.onload = () => {
+    closeNav() 
     scrollToTop()
 }
 
 function scrollToTop() {
-        window.scroll({
+    window.scroll({
         top: 0,
         left: 0,
         behavior: 'auto'
@@ -16,12 +17,28 @@ function scrollToTop() {
 var order = {
     _id: "",
     time: "",
-    first: [],
+    first: [], 
     second: [],
     dessert: [],
     drinks: [],
     table: 0
-};
+}
+
+function toggleNav() {
+    var x = document.getElementById("myLinks");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+
+function closeNav() {
+    var x = document.getElementById("myLinks");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } 
+}
 
 function selectionAdd(selector) {
     var num = document.getElementById(`${selector}`).innerText;
@@ -101,7 +118,6 @@ function storeData(n, selector) {
     }
 
     console.log('Order Data:', order)
-
 }
 
 function display(selector) {
@@ -131,8 +147,8 @@ let guid = () => {
             .toString(16)
             .substring(1);
     }
-    //return id of format 'aaaaaaaa'-'aaaa'-'aaaa'-'aaaa'-'aaaaaaaaaaaa'
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+    //return id of format 'aaaa'-'aaaaaaaaaaaa'
+    return s4() + '-' + s4() + s4() + s4();
 }
 
 // after this ^^
@@ -143,7 +159,7 @@ function btnConfirm() {
     if ((tableNumber > 0) && (tableNumber != '')) {
         order.table = tableNumber
 
-        order.time = new Date().toString()
+        order.time = calcDate()
         order._id = guid()
 
         console.log('Order Data:', order)
@@ -158,10 +174,86 @@ function btnConfirm() {
     }
 }
 
+function calcDate() {
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1;
+    const yyyy = today.getFullYear();
+
+    if (dd < 10) {
+        dd = `0${dd}`;
+    }
+
+    if (mm < 10) {
+        mm = `0${mm}`;
+    }
+
+    var date = `${dd}-${mm}-${yyyy}`;
+
+    let hours = today.getHours()
+    let minutes = today.getMinutes()
+
+    if (hours < 10) {
+        hours = `0${hours}`;
+    }
+
+    if (minutes < 10) {
+        minutes = `0${minutes}`;
+    }
+
+    var time = hours + ":" + minutes + ":" + today.getSeconds();
+    var dateTime = date + ' ' + time
+
+    return dateTime
+}
+
+function orders() {
+    closeNav()
+    document.getElementById('menu-container').innerHTML = `<div class="jumbotron jumbotron-fluid" id="header">
+                                                                <div class="container"><h2 class="display-5">Login</h2>
+                                                                    <p class="lead">to get admin access</p>
+                                                                </div>    
+                                                            </div>
+                                                            <div class="container" style="height:55vh">
+                                                                <form>
+                                                                    <div class="form-group">
+                                                                    <label for="username">Username</label>
+                                                                    <input type="text" class="form-control" id="username" placeholder="Enter username"> 
+                                                                    </div> 
+                                                                    <div class="form-group">
+                                                                    <label for="password">Password</label>
+                                                                    <input type="password" class="form-control" id="password" placeholder="Password">
+                                                                    </div>
+                                                                    <div id="feedback" style="color: red;">
+                                                                    </div>
+                                                                    <br>
+                                                                    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="checkLogin()">Submit</button>
+                                                                </form>  
+                                                            </div>`
+}
+
+function checkLogin() {
+    username = document.getElementById('username')
+    password = document.getElementById('password')
+
+    if ((username.value == 'admin') && (password.value == 'admin')) {   
+      
+        loadOrders()
+    } 
+    else {
+        document.getElementById('feedback').innerText = 'Invalid login.'
+    }
+} 
+
+function loadOrders() {
+    window.location.href = "/orders/"
+}
+
 
 // -- * -- * -- * -- //
 
 function displayPlaced() {
+    closeNav()
     scrollToTop()
     document.getElementById('menu-container').innerHTML = `<div class="jumbotron jumbotron-fluid" id="header">
     <div class="container">
@@ -176,6 +268,7 @@ function displayPlaced() {
 }
 
 function displaySecond() {
+    closeNav()
     scrollToTop()
     document.getElementById('menu-container').innerHTML = `<div class="jumbotron jumbotron-fluid" id="header">
     <div class="container">
@@ -281,6 +374,7 @@ function displaySecond() {
 }
 
 function displayDessert() {
+    closeNav()
     scrollToTop()
     document.getElementById('menu-container').innerHTML = `<div class="jumbotron jumbotron-fluid" id="header">
     <div class="container">
@@ -387,6 +481,7 @@ function displayDessert() {
 }
 
 function displayDrinks() {
+    closeNav()
     scrollToTop()
     document.getElementById('menu-container').innerHTML = `<div class="jumbotron jumbotron-fluid" id="header">
     <div class="container">
@@ -505,6 +600,7 @@ function displayDrinks() {
 }
 
 function displayTable() {
+    closeNav()
     scrollToTop()
     document.getElementById('menu-container').innerHTML = `<div class="jumbotron jumbotron-fluid" id="header">
     <div class="container">
@@ -515,14 +611,22 @@ function displayTable() {
 </div>
 <br>
 <div class="container">
+
+    <div style="text-align: center;">
+        <label for="username">Enter your name</label><br>
+        <div class="input-group">
+            <input type="text" style="text-align:center" class="form-control" name="name" id="username" placeholder="Jeff">
+        </div>
+        <br><br>
+    </div>
     
     <div id="table-selection" style="text-align: center;">
         <label for="table-number">Enter your table's number</label><br>
         <div class="input-group">
-            <input type="number" class="form-control" name="table-number" id="table-number">
+            <input type="number" style="text-align:center" class="form-control" name="table-number" id="table-number" placeholder="13">
         </div>
+        <br>
     </div>
-    
 
 <div class="container" style="margin-bottom: 10%; margin-top: 10%;">
     <button type="button" class="btn btn-primary btn-lg btn-block" onclick="btnConfirm()">Place Order</button>
@@ -530,6 +634,7 @@ function displayTable() {
 }
 
 function startOrderSelection() {
+    closeNav()
     scrollToTop()
     document.getElementById('menu-container').innerHTML = `<div class="jumbotron jumbotron-fluid" id="header">
     <div class="container">
@@ -636,6 +741,7 @@ function startOrderSelection() {
 
 
 function backToMenu() {
+    closeNav()
     scrollToTop()
     document.getElementById('menu-container').innerHTML = `<div id="menu-container"">
     

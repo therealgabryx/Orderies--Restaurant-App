@@ -14,27 +14,35 @@
 </head>
 
 <body>
-    <nav class="navbar fixed-top navbar-dark bg-primary">
-        <a class="navbar-brand justify-content-start" href="#">
-            <img src="../menu/assets/imgs/food.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-            RestaurantApp
-        </a>
+    <div class="pos-f-t">
+        <nav class="navbar fixed-top navbar-dark bg-primary">
+            <div style="display: flex; flex-direction: column;">
+                <div style="width: 92vw; display: flex; flex-direction: row; justify-content: space-between;">
+                    <a class="navbar-brand" href="" style="display: flex;">
+                        <img src="../menu/assets/imgs/drinks.svg" width="30" height="30" class="d-inline-block align-top"
+                            alt="">
+                        <h4 style="color: white; padding-left: 10%; padding-right: 5%;">RestaurantApp</h4>
+                    </a>
+                    <button class="navbar-toggler" type="button" onclick="toggleNav()"><span
+                            class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
 
-        <ul class="nav justify-content-end">
-            <li class="nav-item active">
-                <a class="nav-link text-white" href="/">Menu<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="/orders/">Orders</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </a>
-            </li>
-        </ul>
-    </nav>
+                <div id="myLinks" style="display: none;">
+                    <div style="width: 90vw; height: 11vh;">
+                        <ul class="nav" style="justify-content: space-around; padding-top: 3vh;">
+                            <li class="nav-item active">
+                                <a class="nav-link text-white" href="/">Menu<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" onclick="closeNav()">Orders</a> 
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
 
     <div class="jumbotron jumbotron-fluid" id="header">
         <div id="hd-container"><h2 class="display-5">Orders</h1></div>
