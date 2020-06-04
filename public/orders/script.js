@@ -33,11 +33,16 @@ function updateView(orders, usingSocket) {
     if (usingSocket) {
         socket.emit('socket-update', 'socket-update, +1')
 
-        header.innerHTML = `<div id="hd-container"><h2 class="display-5">Orders (${orders.length})</h1></div>`
+        header.innerHTML = `<div id="hd-container"><h2 class="display-5">Orders </h1><div id="tot-orders"> <div class="spinner-border text-secondary" role="status">
+  <span class="sr-only">Loading...</span>
+</div></div></div>`
+
+var nOrders = document.getElementById('tot-orders')
+
         
             let outstring = '<div class="jumbotron shadow p-3 mb-5 bg-light rounded">'
             outstring += `<h5><strong>Order ID: </strong>${orders[0]._id}</h5>` +
-                `<h5><strong>timestamp: </strong>00-00-00 00:00:00</h5>` +
+                `<h5><strong>timestamp: </strong> ${orders[0].time} </h5>` +
                 '<hr class="my-3">' +
                 `<h5><strong>Table </strong>${orders[0].table}</h5> ` +
                 '<hr class="my-3">'
@@ -93,6 +98,20 @@ function updateView(orders, usingSocket) {
                 output.innerHTML += outstring
                 ordersOnDisplay++
             }
+
+          /* Ajax GET request */
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            let orders = []
+            orders = JSON.parse(this.responseText);
+            /* console.log(orders) */
+            updateNOrders(nOrders, orders.length());
+        }
+    };
+
+    request.open('GET', '/db_orders_fetch', true)
+    request.send()
         
 
     } else {
@@ -103,7 +122,7 @@ function updateView(orders, usingSocket) {
             for (let i = 0; i < orders.length; i++) {
                 let outstring = '<div class="jumbotron shadow p-3 mb-5 bg-light rounded">'
                 outstring += `<h5><strong>Order ID: </strong>${orders[i]._id}</h5>` +
-                    `<h5><strong>timestamp: </strong>00-00-00 00:00:00</h5>` +
+                    `<h5><strong>timestamp: </strong> ${orders[i].time} </h5>` +
                     '<hr class="my-3">' +
                     `<h5><strong>Table </strong>${orders[i].table}</h5> ` +
                     '<hr class="my-3">'
@@ -169,6 +188,12 @@ function updateView(orders, usingSocket) {
         }
         socket.emit('viewing-orders', 'viewing-orders, +1')
     }
+
+}
+
+function updateNOrders(htmlObj, n) {
+
+htmlObj.innerHTML = n
 
 }
 
