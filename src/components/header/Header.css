@@ -38,4 +38,14 @@ div.header nav ul {
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
 }
+
+div.header nav a {
+  text-decoration: none;
+  color: white;
+}
+
+div.header nav a:hover {
+  text-decoration: none;
+  color: #aaaaaa;
+}
 /*# sourceMappingURL=Header.css.map */

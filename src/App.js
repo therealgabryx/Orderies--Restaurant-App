@@ -17,6 +17,7 @@ import Second from './components/second/Second';
 import Dessert from './components/dessert/Dessert';
 import Recap from './components/recap/Recap';
 import Complete from './components/complete/Complete';
+import NoMatch from './components/noMatch/NoMatch';
 
 /* Admin */
 import Dashboard from './components/dashboard/Dashboard';
@@ -45,7 +46,7 @@ function App() {
             <Home></Home>
           </Route> 
 
-          <Route exact path="/login">
+          <Route exact path="/login"> 
             <Login></Login>
           </Route> 
 
@@ -71,6 +72,10 @@ function App() {
 
           <Route exact path="/neworder/recap">
             <Recap></Recap>
+          </Route> 
+
+          <Route path="*">
+            <NoMatch></NoMatch>
           </Route> 
 
         </Switch> 

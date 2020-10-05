@@ -1,7 +1,7 @@
 import React from 'react';
 import '../header/Header.css'; 
-
-// Shards Components 
+ 
+import { Link } from 'react-router-dom';
 
 export default function Header() { 
     return ( 
@@ -10,10 +10,10 @@ export default function Header() {
                 <h4>Orderies webApp</h4> 
                 <ul>
                     <li>
-                        Home
+                        <Link to="/">Home</Link> 
                     </li>
                     <li>
-                        Login
+                        <Link to="/login">Login</Link> 
                     </li>
                 </ul>
             </nav>

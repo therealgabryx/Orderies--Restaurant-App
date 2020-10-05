@@ -20,7 +20,17 @@ div.header {
             list-style: none;
             display: flex;
             flex-direction: row;
-            justify-content: space-evenly;
+            justify-content: space-evenly; 
+        } 
+
+        a {
+            text-decoration: none;
+            color: white;
+        } 
+
+        a:hover {
+            text-decoration: none;
+            color: #aaaaaa;
         } 
     }
 } 
