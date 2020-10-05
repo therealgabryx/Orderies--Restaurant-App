@@ -4,7 +4,7 @@ import '../footer/Footer.css'
 export default function Footer() {
     return (
         <div className="footer">
-            cc
+            Orderies WebApp
         </div>
-    )
+    ) 
 }

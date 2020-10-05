@@ -1,11 +1,11 @@
-div.header {
+div.adminHeader {
   min-height: 20vh;
   background-color: var(--brand-main-color);
   color: white;
   text-align: center;
 }
 
-div.header nav {
+div.adminHeader nav {
   height: 20vh;
   padding-top: 0;
   display: -webkit-box;
@@ -20,11 +20,11 @@ div.header nav {
           justify-content: center;
 }
 
-div.header nav h4 {
+div.adminHeader nav h4 {
   color: white;
 }
 
-div.header nav ul {
+div.adminHeader nav ul {
   padding-top: 15px;
   list-style: none;
   display: -webkit-box;
@@ -38,4 +38,4 @@ div.header nav ul {
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
 }
-/*# sourceMappingURL=Header.css.map */
+/*# sourceMappingURL=AdminHeader.css.map */

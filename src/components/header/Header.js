@@ -2,15 +2,21 @@ import React from 'react';
 import '../header/Header.css'; 
 
 // Shards Components 
-import { Navbar, NavbarBrand, } from "shards-react"; 
 
 export default function Header() { 
     return ( 
         <div className="header"> 
-            <Navbar>
-                <NavbarBrand>Orderies</NavbarBrand> 
-                webApp
-            </Navbar>
+            <nav>
+                <h4>Orderies webApp</h4> 
+                <ul>
+                    <li>
+                        Home
+                    </li>
+                    <li>
+                        Login
+                    </li>
+                </ul>
+            </nav>
         </div> 
     ) 
 } 
