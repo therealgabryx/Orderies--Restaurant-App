@@ -48,10 +48,17 @@ io.on('connection', (socket) => {
 
 /* Listen for post requests on '/' */
 app.post('/', (req, res) => {
+    orderEmpty = false
     order = JSON.parse(JSON.stringify(req.body));
     console.log('\nPOST successful:\n', order);
 
-    /* Database Storing */
+    if ((order.first.length == 0) && (order.second.length == 0) && (order.dessert.length == 0) && (order.drinks.length == 0)) {
+        orderEmpty = true
+        /* console.log('\n >>>GG<<<\n') */
+    }
+
+    if (!orderEmpty) {
+        /* Database Storing */
     mongoClient.connect(
         uri, {
             useNewUrlParser: true,
@@ -77,6 +84,10 @@ app.post('/', (req, res) => {
             });
         }
     );
+    }
+    else {
+        console.log('\nOrder is empty');
+    }
 });
 
 app.get('/orders/', (req, res, next) => {

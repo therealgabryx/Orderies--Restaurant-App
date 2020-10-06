@@ -17,6 +17,8 @@ function scrollToTop() {
 var order = {
     _id: "",
     time: "",
+    name: "",
+    details: "",
     first: [], 
     second: [],
     dessert: [],
@@ -155,22 +157,30 @@ let guid = () => {
 function btnConfirm() {
     scrollToTop()
     var tableNumber = document.getElementById('table-number').value
-
-    if ((tableNumber > 0) && (tableNumber != '')) {
-        order.table = tableNumber
-
-        order.time = calcDate()
-        order._id = guid()
-
-        console.log('Order Data:', order)
-
-        /* Ajax POST request */
-        var xhttp = new XMLHttpRequest();
-        xhttp.open('POST', '/', true)
-        xhttp.setRequestHeader('Content-type', 'application/json')
-        xhttp.send(JSON.stringify(order))
-
-        display('placed')
+    order.name = document.getElementById('username').value
+    order.details = document.getElementById('more-input').value
+    
+    if ((order.first.length == 0) && (order.second.length == 0) && (order.dessert.length == 0) && (order.drinks.length == 0)) {
+        document.getElementById('feedback').innerText = 'L\'ordine non contiene alcun elemento'
+        console.log('Order is empty')
+    }
+    else {
+        if ((tableNumber > 0) && (tableNumber != '')) { 
+            order.table = tableNumber
+    
+            order.time = calcDate()
+            order._id = guid()
+    
+            console.log('Order Data:', order)
+    
+            /* Ajax POST request */
+            var xhttp = new XMLHttpRequest();
+            xhttp.open('POST', '/', true)
+            xhttp.setRequestHeader('Content-type', 'application/json')
+            xhttp.send(JSON.stringify(order))
+    
+            display('placed')
+        }
     }
 }
 
@@ -209,12 +219,13 @@ function calcDate() {
 
 function orders() {
     closeNav()
+    document.getElementById('hd-logo').innerHTML = `<img src="menu/assets/logos/ord-admin.png " width="150" height="40" style="margin-left: 10%; margin-top: 2%;">`
     document.getElementById('menu-container').innerHTML = `<div class="jumbotron jumbotron-fluid" id="header">
                                                                 <div class="container"><h2 class="display-5">Login</h2>
-                                                                    <p class="lead">to get admin access</p>
+                                                                    <p class="lead">per accedere agli ordini</p>
                                                                 </div>    
                                                             </div>
-                                                            <div class="container" style="height:55vh">
+                                                            <div class="container" style="height:65vh">
                                                                 <form>
                                                                     <div class="form-group">
                                                                     <label for="username">Username</label>
@@ -257,13 +268,13 @@ function displayPlaced() {
     scrollToTop()
     document.getElementById('menu-container').innerHTML = `<div class="jumbotron jumbotron-fluid" id="header">
     <div class="container">
-        <h1 class="display-4">Order Placed</h1>
-        <p class="lead">Thanking you in advance for choosing us</p>
+    <h1 class="display-4" style="font-size: 2.7rem;">Ordine Inviato</h1>
+        <p class="lead">la ringraziamo per averci scelto</p>
     </div>
-</div>` + '<div class="alert alert-success" role="alert" style="margin:5%; border-radius:5px; margin-top:15%; margin-bottom:55%;">' +
-        '<h4 class="alert-heading"><strong>Success!</strong></h4>' +
+</div>` + '<div class="alert alert-success" role="alert" style="margin:5%; border-radius:5px; margin-top:15%; margin-bottom:70%;">' +
+        '<h4 class="alert-heading"><strong>Ordine inviato!</strong></h4>' +
         '<hr>' +
-        '<p class="mb-0">Your order has been received and it\'s already on your way!</p>' +
+        '<p class="mb-0">Il tuo ordine è stato ricevuto e stiamo già iniziando a prepararlo!</p>' +
         '</div>'
 }
 
@@ -272,21 +283,21 @@ function displaySecond() {
     scrollToTop()
     document.getElementById('menu-container').innerHTML = `<div class="jumbotron jumbotron-fluid" id="header">
     <div class="container">
-        <h1 class="display-4">Second dishes</h1>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at augue ut nisl pellentesque
-            commodo. Praesent ullamcorper felis ut lorem malesuada, eget hendrerit purus facilisis.</p>
+    <h1 class="display-4" style="font-size: 2.7rem;">Secondi Piatti</h1>
+        <p class="lead" style="padding-top: 4%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at augue ut nisl pellentesque
+            commodo.</p>
     </div>
 </div>
 
 <div class="container" id="button">
-    <p class="lead" style="text-align: center;">Want to take a look back at the menu?</p>
-    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="backToMenu()">Click Here</button>
+    <p class="lead" style="text-align: center;">Vuoi dare un'occhiata al menu?</p>
+    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="backToMenu()">Clicca Qui</button>
 </div>
 
 <div class="container" id="menu-container" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-evenly;">
 
     <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
-        <img src="menu/assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+        <img src="menu/assets/selection-imgs/seconds/1.jpg" class="card-img-top" alt="placeholder">
         <div class="card-body" style="text-align: center;">
             <h5 class="card-title" style="margin: 0;" id="second-text1">Polpette al sugo</h5>
         </div>
@@ -302,7 +313,7 @@ function displaySecond() {
     </div>
 
     <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
-        <img src="menu/assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+        <img src="menu/assets/selection-imgs/seconds/2.jpg" class="card-img-top" alt="placeholder">
         <div class="card-body" style="text-align: center;">
             <h5 class="card-title" style="margin: 0;" id="second-text2">Parmigiana di melanzane</h5>
         </div>  
@@ -318,7 +329,7 @@ function displaySecond() {
     </div>
 
     <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
-        <img src="menu/assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+        <img src="menu/assets/selection-imgs/seconds/3.jpg" class="card-img-top" alt="placeholder">
         <div class="card-body" style="text-align: center;">
             <h5 class="card-title" style="margin: 0;" id="second-text3">Pollo alle mandorle</h5>
         </div>
@@ -334,7 +345,7 @@ function displaySecond() {
     </div>
 
     <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
-        <img src="menu/assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+        <img src="menu/assets/selection-imgs/seconds/4.jpg" class="card-img-top" alt="placeholder">
         <div class="card-body" style="text-align: center;">
             <h5 class="card-title" style="margin: 0;" id="second-text4">Pollo al curry</h5>
         </div>
@@ -350,7 +361,7 @@ function displaySecond() {
     </div>
 
     <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
-        <img src="menu/assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+        <img src="menu/assets/selection-imgs/seconds/5.jpg" class="card-img-top" alt="placeholder">
         <div class="card-body" style="text-align: center;">
             <h5 class="card-title" style="margin: 0;" id="second-text5">Brasato al barolo</h5>
         </div>
@@ -369,7 +380,7 @@ function displaySecond() {
 
 <div class="container" style="margin-bottom: 10%; margin-top: 10%;">
     <!-- <p class="lead" style="text-align: center;">..</p> -->
-    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="btnContinue('second')">Continue</button>
+    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="btnContinue('second')">Continua</button>
 </div>`
 }
 
@@ -378,21 +389,21 @@ function displayDessert() {
     scrollToTop()
     document.getElementById('menu-container').innerHTML = `<div class="jumbotron jumbotron-fluid" id="header">
     <div class="container">
-        <h1 class="display-4">Desserts</h1>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at augue ut nisl pellentesque
-            commodo. Praesent ullamcorper felis ut lorem malesuada, eget hendrerit purus facilisis.</p>
+    <h1 class="display-4" style="font-size: 2.7rem;">Dolci</h1>
+        <p class="lead" style="padding-top: 4%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at augue ut nisl pellentesque
+            commodo.</p>
     </div>
 </div>
 
 <div class="container" id="button">
-    <p class="lead" style="text-align: center;">Want to take a look back at the menu?</p>
-    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="backToMenu()">Click Here</button>
+    <p class="lead" style="text-align: center;">Vuoi dare un'occhiata al menu?</p>
+    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="backToMenu()">Clicca Qui</button>
 </div>
 
 <div class="container" id="menu-container" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-evenly;">
 
     <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
-        <img src="menu/assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+        <img src="menu/assets/selection-imgs/desserts/1.jpg" class="card-img-top" alt="placeholder">
         <div class="card-body" style="text-align: center;">
             <h5 class="card-title" style="margin: 0;" id="dessert-text1">Tiramisù</h5>
         </div>
@@ -408,7 +419,7 @@ function displayDessert() {
     </div>
 
     <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
-        <img src="menu/assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+        <img src="menu/assets/selection-imgs/desserts/2.jpg" class="card-img-top" alt="placeholder">
         <div class="card-body" style="text-align: center;">
             <h5 class="card-title" style="margin: 0;" id="dessert-text2">Crema Catalana</h5>
         </div>  
@@ -424,7 +435,7 @@ function displayDessert() {
     </div>
 
     <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
-        <img src="menu/assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+        <img src="menu/assets/selection-imgs/desserts/3.jpg" class="card-img-top" alt="placeholder">
         <div class="card-body" style="text-align: center;">
             <h5 class="card-title" style="margin: 0;" id="dessert-text3">Semifreddo al caffè</h5>
         </div>
@@ -440,7 +451,7 @@ function displayDessert() {
     </div>
 
     <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
-        <img src="menu/assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+        <img src="menu/assets/selection-imgs/desserts/4.jpg" class="card-img-top" alt="placeholder">
         <div class="card-body" style="text-align: center;">
             <h5 class="card-title" style="margin: 0;" id="dessert-text4">Crème caramel</h5>
         </div>
@@ -456,7 +467,7 @@ function displayDessert() {
     </div>
 
     <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
-        <img src="menu/assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+        <img src="menu/assets/selection-imgs/desserts/5.jpg" class="card-img-top" alt="placeholder">
         <div class="card-body" style="text-align: center;">
             <h5 class="card-title" style="margin: 0;" id="dessert-text5">Panna cotta con fragole</h5>
         </div>
@@ -475,7 +486,7 @@ function displayDessert() {
 
     <div class="container" style="margin-bottom: 10%; margin-top: 10%;">
         <!-- <p class="lead" style="text-align: center;">..</p> -->
-        <button type="button" class="btn btn-primary btn-lg btn-block" onclick="btnContinue('dessert')">Continue</button>
+        <button type="button" class="btn btn-primary btn-lg btn-block" onclick="btnContinue('dessert')">Continua</button>
     </div>
 `
 }
@@ -485,21 +496,21 @@ function displayDrinks() {
     scrollToTop()
     document.getElementById('menu-container').innerHTML = `<div class="jumbotron jumbotron-fluid" id="header">
     <div class="container">
-        <h1 class="display-4">Drinks</h1>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at augue ut nisl pellentesque
-            commodo. Praesent ullamcorper felis ut lorem malesuada, eget hendrerit purus facilisis.</p>
+    <h1 class="display-4" style="font-size: 2.7rem;">Bevande</h1>
+        <p class="lead" style="padding-top: 4%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at augue ut nisl pellentesque
+            commodo.</p>
     </div>
 </div>
 
 <div class="container" id="button">
-    <p class="lead" style="text-align: center;">Want to take a look back at the menu?</p>
-    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="backToMenu()">Click Here</button>
+    <p class="lead" style="text-align: center;">Vuoi dare un'occhiata al menu?</p>
+    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="backToMenu()">Clicca Qui</button>
 </div>
 
 <div class="container" id="menu-container" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-evenly;">
 
     <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
-        <img src="menu/assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+        <img src="menu/assets/selection-imgs/drinks/1.jpg" class="card-img-top" alt="placeholder">
         <div class="card-body" style="text-align: center;">
             <h5 class="card-title" style="margin: 0;" id="drinks-text1">Bionda</h5>
         </div>
@@ -515,7 +526,7 @@ function displayDrinks() {
     </div>
 
     <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
-        <img src="menu/assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+        <img src="menu/assets/selection-imgs/drinks/2.jpg" class="card-img-top" alt="placeholder">
         <div class="card-body" style="text-align: center;">
             <h5 class="card-title" style="margin: 0;" id="drinks-text2">Doppio malto</h5>
         </div>  
@@ -531,7 +542,7 @@ function displayDrinks() {
     </div>
 
     <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
-        <img src="menu/assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+        <img src="menu/assets/selection-imgs/drinks/3.jpg" class="card-img-top" alt="placeholder">
         <div class="card-body" style="text-align: center;">
             <h5 class="card-title" style="margin: 0;" id="drinks-text3">Teroldego</h5>
         </div>
@@ -547,7 +558,7 @@ function displayDrinks() {
     </div>
 
     <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
-        <img src="menu/assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+        <img src="menu/assets/selection-imgs/drinks/4.jpg" class="card-img-top" alt="placeholder">
         <div class="card-body" style="text-align: center;">
             <h5 class="card-title" style="margin: 0;" id="drinks-text4">Pinot Grigio</h5>
         </div>
@@ -563,7 +574,7 @@ function displayDrinks() {
     </div>
 
     <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
-        <img src="menu/assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+        <img src="menu/assets/selection-imgs/drinks/5.jpg" class="card-img-top" alt="placeholder">
         <div class="card-body" style="text-align: center;">
             <h5 class="card-title" style="margin: 0;" id="drinks-text5">Acqua 1/2l</h5>
         </div>
@@ -579,7 +590,7 @@ function displayDrinks() {
     </div>
 
     <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
-        <img src="menu/assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+        <img src="menu/assets/selection-imgs/drinks/6.jpg" class="card-img-top" alt="placeholder">
         <div class="card-body" style="text-align: center;">
             <h5 class="card-title" style="margin: 0;" id="drinks-text6">Analcolici 33cl</h5>
         </div>
@@ -595,7 +606,7 @@ function displayDrinks() {
     </div>
 </div>
 <div class="container" style="margin-bottom: 10%; margin-top: 10%;">
-        <button type="button" class="btn btn-primary btn-lg btn-block" onclick="btnContinue('drinks')">Continue</button>
+        <button type="button" class="btn btn-primary btn-lg btn-block" onclick="btnContinue('drinks')">Continua</button>
 </div>`
 }
 
@@ -604,16 +615,16 @@ function displayTable() {
     scrollToTop()
     document.getElementById('menu-container').innerHTML = `<div class="jumbotron jumbotron-fluid" id="header">
     <div class="container">
-        <h1 class="display-4">Table</h1>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at augue ut nisl pellentesque
-            commodo. Praesent ullamcorper felis ut lorem malesuada, eget hendrerit purus facilisis.</p>
+    <h1 class="display-4" style="font-size: 2.7rem;">Dettagli Ordine</h1>
+        <p class="lead" style="padding-top: 4%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at augue ut nisl pellentesque
+            commodo.</p>
     </div>
 </div>
 <br>
 <div class="container">
 
     <div style="text-align: center;">
-        <label for="username">Enter your name</label><br>
+        <label for="username">Inserisci il tuo nome</label><br>
         <div class="input-group">
             <input type="text" style="text-align:center" class="form-control" name="name" id="username" placeholder="Jeff">
         </div>
@@ -621,15 +632,25 @@ function displayTable() {
     </div>
     
     <div id="table-selection" style="text-align: center;">
-        <label for="table-number">Enter your table's number</label><br>
+        <label for="table-number">Inserisci il numero del tavolo</label><br>
         <div class="input-group">
             <input type="number" style="text-align:center" class="form-control" name="table-number" id="table-number" placeholder="13">
         </div>
-        <br>
+        <br><br>
+    </div>
+
+    <div style="text-align: center;">
+        <label for="more-input">Indicazioni aggiuntive</label><br>
+        <div class="input-group">
+            <textarea style="text-align:center" class="form-control" name="more-input" rows="2" id="more-input" placeholder=""></textarea>
+        </div>   
+    </div>
+    <br>
+    <div id="feedback" style="color: red; text-align: center">
     </div>
 
 <div class="container" style="margin-bottom: 10%; margin-top: 10%;">
-    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="btnConfirm()">Place Order</button>
+    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="btnConfirm()">Invia Ordine</button>
 </div><br><br></div>`
 }
 
@@ -638,21 +659,21 @@ function startOrderSelection() {
     scrollToTop()
     document.getElementById('menu-container').innerHTML = `<div class="jumbotron jumbotron-fluid" id="header">
     <div class="container">
-        <h1 class="display-4">First dishes</h1>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at augue ut nisl pellentesque
-            commodo. Praesent ullamcorper felis ut lorem malesuada, eget hendrerit purus facilisis.</p>
+        <h1 class="display-4" style="font-size: 2.7rem;">Primi Piatti</h1>
+        <p class="lead" style="padding-top: 4%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at augue ut nisl pellentesque
+            commodo.</p>
     </div>
 </div>
 
 <div class="container" id="button">
-    <p class="lead" style="text-align: center;">Want to take a look back at the menu?</p>
-    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="backToMenu()">Click Here</button>
+    <p class="lead" style="text-align: center;">Vuoi dare un'occhiata al menu?</p>
+    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="backToMenu()">Clicca Qui</button>
 </div>
 
 <div class="container" id="menu-container" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-evenly;">
 
     <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
-        <img src="menu/assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+        <img src="menu/assets/selection-imgs/firsts/1.jpg" class="card-img-top" alt="placeholder">
         <div class="card-body" style="text-align: center;">
             <h5 class="card-title" style="margin: 0;" id="first-text1">Pasta alla carbonara</h5>
         </div>
@@ -668,7 +689,7 @@ function startOrderSelection() {
     </div>
 
     <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
-        <img src="menu/assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+        <img src="menu/assets/selection-imgs/firsts/2.jpg" class="card-img-top" alt="placeholder">
         <div class="card-body" style="text-align: center;">
             <h5 class="card-title" style="margin: 0;" id="first-text2">Pasta al ragù</h5>
         </div>  
@@ -684,7 +705,7 @@ function startOrderSelection() {
     </div>
 
     <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
-        <img src="menu/assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+        <img src="menu/assets/selection-imgs/firsts/3.jpg" class="card-img-top" alt="placeholder">
         <div class="card-body" style="text-align: center;">
             <h5 class="card-title" style="margin: 0;" id="first-text3">Lasagne</h5>
         </div>
@@ -700,7 +721,7 @@ function startOrderSelection() {
     </div>
 
     <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
-        <img src="menu/assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+        <img src="menu/assets/selection-imgs/firsts/4.jpg" class="card-img-top" alt="placeholder">
         <div class="card-body" style="text-align: center;">
             <h5 class="card-title" style="margin: 0;" id="first-text4">Tris di canederli</h5>
         </div>
@@ -716,7 +737,7 @@ function startOrderSelection() {
     </div>
 
     <div class="card" style="width: 18rem; margin-bottom: 5%; margin-right: 2%;">
-        <img src="menu/assets/imgs/placeholder.PNG" class="card-img-top" alt="placeholder">
+        <img src="menu/assets/selection-imgs/firsts/5.jpg" class="card-img-top" alt="placeholder">
         <div class="card-body" style="text-align: center;">
             <h5 class="card-title" style="margin: 0;" id="first-text5">Spätzle</h5>
         </div>
@@ -735,7 +756,7 @@ function startOrderSelection() {
 
 <div class="container" style="margin-bottom: 10%; margin-top: 10%;">
     <!-- <p class="lead" style="text-align: center;">..</p> -->
-    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="btnContinue('first')">Continue</button>
+    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="btnContinue('first')">Continua</button>
 </div>`
 }
 
@@ -747,22 +768,24 @@ function backToMenu() {
     
     <div class=" jumbotron jumbotron-fluid" id="header">
 <div class="container">
-    <h1 class="display-4">Our Selection</h1>
-    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at augue ut nisl pellentesque
-        commodo. Praesent ullamcorper felis ut lorem malesuada, eget hendrerit purus facilisis.</p>
+    <h1 class="display-4" style="font-size: 2.7rem;">Le nostre proposte</h1>
+    <p class="lead" style="padding-top: 4%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Nam at augue ut nisl
+                    pellentesque
+                    commodo. Praesent ullamcorper felis ut lorem malesuada.
+                </p>
 </div>
 </div>
 
 <div class="container" id="button">
-<p class="lead" style="text-align: center;">Didn't order anything yet?</p>
-<button type="button" class="btn btn-primary btn-lg btn-block" onclick="startOrderSelection()">Click
-Here</button>
+<p class="lead" style="text-align: center;">Non hai ancora <strong>ordinato</strong>?</p>
+<button type="button" class="btn btn-primary btn-lg btn-block" onclick="startOrderSelection()">Clicca Qui</button>
 </div>
 
 <div class="container">
 <!-- first dishes -->
 <div class="jumbotron">
-    <h1 class="display-5">First dishes</h1>
+    <h1 class="display-5">Primi</h1>
     <hr class="my-4">
     <div>
         <ul class="list-group list-group-flush">
@@ -790,7 +813,7 @@ Here</button>
             <li class="list-group-item">
                 <div class="list-item">
                     <div>Tris di canederli</div>
-                    <div>€ 5,90</div>
+                    <div>€ 6,90</div>
                 </div>
             </li>
 
@@ -806,42 +829,42 @@ Here</button>
 
 <!-- second dishes -->
 <div class="jumbotron">
-    <h1 class="display-5">Second dishes</h1>
+    <h1 class="display-5">Secondi</h1>
     <hr class="my-4">
     <div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
                 <div class="list-item">
                     <div>Polpette al sugo</div>
-                    <div>€ 7,50</div>
+                    <div>€ 8,50</div>
                 </div>
             </li>
 
             <li class="list-group-item">
                 <div class="list-item">
                     <div>Parmigiana di melanzane</div>
-                    <div>€ 6,50</div>
+                    <div>€ 7,50</div>
                 </div>
             </li>
 
             <li class="list-group-item">
                 <div class="list-item">
                     <div>Pollo alle mandorle</div>
-                    <div>€ 7,00</div>
+                    <div>€ 6,00</div>
                 </div>
             </li>
 
             <li class="list-group-item">
                 <div class="list-item">
                     <div>Pollo al curry</div>
-                    <div>€ 5,90</div>
+                    <div>€ 6,90</div>
                 </div>
             </li>
 
             <li class="list-group-item">
                 <div class="list-item">
                     <div>Brasato al barolo</div>
-                    <div>€ 7,50</div>
+                    <div>€ 9,50</div>
                 </div>
             </li>
         </ul>
@@ -850,42 +873,42 @@ Here</button>
 
 <!-- desserts -->
 <div class="jumbotron">
-    <h1 class="display-5">Desserts</h1>
+    <h1 class="display-5">Dolci</h1>
     <hr class="my-4">
     <div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
                 <div class="list-item">
                     <div>Tiramisù</div>
-                    <div>€ 7,50</div>
+                    <div>€ 3,50</div>
                 </div>
             </li>
 
             <li class="list-group-item">
                 <div class="list-item">
                     <div>Crema Catalana</div>
-                    <div>€ 6,50</div>
+                    <div>€ 3,50</div>
                 </div>
             </li>
 
             <li class="list-group-item">
                 <div class="list-item">
                     <div>Semifreddo al caffè</div>
-                    <div>€ 7,00</div>
+                    <div>€ 2,90</div>
                 </div>
             </li>
 
             <li class="list-group-item">
                 <div class="list-item">
                     <div>Crème caramel</div>
-                    <div>€ 5,90</div>
+                    <div>€ 2,90</div>
                 </div>
             </li>
 
             <li class="list-group-item">
                 <div class="list-item">
                     <div>Panna cotta con fragole</div>
-                    <div>€ 7,50</div>
+                    <div>€ 3,50</div>
                 </div>
             </li>
         </ul>
@@ -894,7 +917,7 @@ Here</button>
 
 <!-- drinks -->
 <div class="jumbotron">
-    <h1 class="display-5">Drinks</h1>
+    <h1 class="display-5">Bevande</h1>
     <hr class="my-4">
     <div>
         <ul class="list-group list-group-flush">
@@ -907,14 +930,14 @@ Here</button>
             <li class="list-group-item">
                 <div class="list-item">
                     <div>Bionda</div>
-                    <div>€ 6,50</div>
+                    <div>€ 1,50</div>
                 </div>
             </li>
 
             <li class="list-group-item">
                 <div class="list-item">
                     <div>Doppio malto</div>
-                    <div>€ 6,50</div>
+                    <div>€ 1,90</div>
                 </div>
             </li>
         </ul>
@@ -930,28 +953,28 @@ Here</button>
             <li class="list-group-item">
                 <div class="list-item">
                     <div>Teroldego</div>
-                    <div>€ 6,50</div>
+                    <div>€ 7,50</div>
                 </div>
             </li>
 
             <li class="list-group-item">
                 <div class="list-item">
                     <div>Pinot Grigio</div>
-                    <div>€ 7,00</div>
+                    <div>€ 10,00</div>
                 </div>
             </li>
 
             <li class="list-group-item">
                 <div class="list-item">
                     <div>Acqua 1/2l</div>
-                    <div>€ 5,90</div>
+                    <div>€ 1,90</div>
                 </div>
             </li>
 
             <li class="list-group-item">
                 <div class="list-item">
                     <div>Analcolici 33cl</div>
-                    <div>€ 7,50</div>
+                    <div>€ 2,50</div>
                 </div>
             </li>
         </ul>
@@ -961,9 +984,8 @@ Here</button>
 </div>
 
 <div class="container" style="margin-bottom: 10%;">
-<p class="lead" style="text-align: center;">Didn't order anything yet?</p>
-<button type="button" class="btn btn-primary btn-lg btn-block" onclick="startOrderSelection()">Click
-Here</button>
+<p class="lead" style="text-align: center;">Non hai ancora <strong>ordinato</strong>?</p>
+<button type="button" class="btn btn-primary btn-lg btn-block" onclick="startOrderSelection()">Clicca Qui</button>
 </div>
 </div>`
 }
