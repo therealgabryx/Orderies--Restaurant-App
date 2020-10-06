@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant App</title>
+    <!-- <link rel="stylesheet" type="text/css" href="styles/webfontkit/stylesheet.css"> -->
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js">
+    </script>
+    <script defer type="text/javascript" src="app.js"></script>
+</head>
+
+<body>
+    <div class="pos-f-t">
+        <nav class="navbar fixed-top navbar-dark bg-primary">
+            <div style="display: flex; flex-direction: column;">
+                <div style="width: 92vw; display: flex; flex-direction: row; justify-content: space-between;">
+                    <a class="navbar-brand" href="" style="display: flex;">
+                        <img src="menu/assets/imgs/drinks.svg" width="30" height="30" class="d-inline-block align-top"
+                            alt="">
+                        <!-- <h4 style="color: white; padding-left: 10%; padding-right: 5%;">RestaurantApp</h4> -->
+                        <span id="hd-logo">
+                            <img src="menu/assets/logos/ord-s.png " width="152" height="29" style="margin-left: 10%; margin-bottom: 2%;">
+                        </span> 
+                    </a>
+                    <button class="navbar-toggler" type="button" onclick="toggleNav()"><span
+                            class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+
+                <div id="myLinks" style="display: none;">
+                    <div style="width: 90vw; height: 11vh;">
+                        <ul class="nav" style="justify-content: space-around; padding-top: 3vh;">
+                            <li class="nav-item active">
+                                <a class="nav-link text-white" href="/">Menu<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" onclick="orders()">Ordini</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div id="menu-container">
+
+        <div class=" jumbotron jumbotron-fluid" id="header">
+            <div class="container">
+                <h1 class="display-4" style="font-size: 2.7rem;">Le nostre proposte</h1>
+                <p class="lead" style="padding-top: 4%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Nam at augue ut nisl
+                    pellentesque
+                    commodo. Praesent ullamcorper felis ut lorem malesuada.
+                </p>
+            </div>
+        </div>
+
+        <div class="container" id="button">
+            <p class="lead" style="text-align: center;">Non hai ancora <strong>ordinato</strong>?</p>
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="startOrderSelection()">Clicca
+                Qui</button>
+        </div>
+
+        <div class="container">
+            <!-- first dishes -->
+            <div class="jumbotron">
+                <h1 class="display-5">Primi</h1>
+                <hr class="my-4">
+                <div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Pasta alla carbonara</div>
+                                <div>€ 7,50</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Pasta al ragù</div>
+                                <div>€ 6,50</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Lasagne</div>
+                                <div>€ 7,00</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Tris di canederli</div>
+                                <div>€ 6,90</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Spätzle</div>
+                                <div>€ 7,50</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- second dishes -->
+            <div class="jumbotron">
+                <h1 class="display-5">Secondi</h1>
+                <hr class="my-4">
+                <div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Polpette al sugo</div>
+                                <div>€ 8,50</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Parmigiana di melanzane</div>
+                                <div>€ 7,50</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Pollo alle mandorle</div>
+                                <div>€ 6,00</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Pollo al curry</div>
+                                <div>€ 6,90</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Brasato al barolo</div>
+                                <div>€ 9,50</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- desserts -->
+            <div class="jumbotron">
+                <h1 class="display-5">Dolci</h1>
+                <hr class="my-4">
+                <div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Tiramisù</div>
+                                <div>€ 3,50</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Crema Catalana</div>
+                                <div>€ 3,50</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Semifreddo al caffè</div>
+                                <div>€ 2,90</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Crème caramel</div>
+                                <div>€ 2,90</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Panna cotta con fragole</div>
+                                <div>€ 3,50</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- drinks -->
+            <div class="jumbotron">
+                <h1 class="display-5">Bevande</h1>
+                <hr class="my-4">
+                <div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" style="background-color: #e9ecef; border: none;">
+                            <div class="list-item">
+                                <div>Birre</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Bionda</div>
+                                <div>€ 1,50</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Doppio malto</div>
+                                <div>€ 1,90</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <br>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" style="background-color: #e9ecef; border: none;">
+                            <div class="list-item">
+                                <div>Vini</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Teroldego</div>
+                                <div>€ 7,50</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Pinot Grigio</div>
+                                <div>€ 10,00</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Acqua 1/2l</div>
+                                <div>€ 1,90</div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="list-item">
+                                <div>Analcolici 33cl</div>
+                                <div>€ 2,50</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container" style="margin-bottom: 10%;">
+            <p class="lead" style="text-align: center;">Non hai ancora <strong>ordinato</strong>?</p>
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="startOrderSelection()">Clicca
+                Qui</button>
+        </div>
+    </div>
+
+    <div class="bg-dark text-secondary text-center">
+        <div class="container" id="footer">
+            
+            <!-- Copyright -->
+            <div class="footer-copyright"">© Copyright 2020 -
+                <a href="" style="color: inherit;">Orderies v0.1β</a>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
+<!-- ¯\_(ツ)_/¯ -->

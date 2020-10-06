@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js">
+    </script>
+    <script defer src="script.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="pos-f-t">
+        <nav class="navbar fixed-top navbar-dark bg-primary">
+            <div style="display: flex; flex-direction: column;">
+                <div style="width: 92vw; display: flex; flex-direction: row; justify-content: space-between;">
+                    <a class="navbar-brand" href="/" style="display: flex;">
+                        <img src="../menu/assets/imgs/drinks.svg" width="30" height="30" class="d-inline-block align-top"
+                            alt="">
+                        <!-- <h4 style="color: white; padding-left: 10%; padding-right: 5%;">RestaurantApp</h4> -->
+                        <span id="hd-logo">
+                            <img src="../menu/assets/logos/ord-admin.png " width="150" height="40" style="margin-left: 10%; margin-top: 2%;">
+                        </span>
+                    </a>
+                    <button class="navbar-toggler" type="button" onclick="toggleNav()"><span
+                            class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+
+                <div id="myLinks" style="display: none;">
+                    <div style="width: 90vw; height: 11vh;">
+                        <ul class="nav" style="justify-content: space-around; padding-top: 3vh;">
+                            <li class="nav-item active">
+                                <a class="nav-link text-white" href="/">Menu<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" onclick="closeNav()">Orders</a> 
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid" id="header">
+        <div id="hd-container"><h2 class="display-5">Ordini</h1></div>
+    </div>
+    <div id="container">
+        <div class="d-flex justify-content-center">
+            <div class="spinner-grow text-secondary" role="status" style="margin-top: 40%; margin-bottom: 115%;">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+    <div class="bg-dark text-secondary text-center">
+        <div class="container" id="footer">
+            <!-- Copyright -->
+            <div class="footer-copyright"">© Copyright 2020 -
+                <a href="" style="color: inherit;">Orderies v0.1β</a>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
