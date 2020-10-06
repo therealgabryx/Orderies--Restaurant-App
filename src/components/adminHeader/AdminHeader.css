@@ -1,0 +1,41 @@
+div.adminHeader {
+  min-height: 20vh;
+  background-color: var(--brand-main-color);
+  color: white;
+  text-align: center;
+}
+
+div.adminHeader nav {
+  height: 20vh;
+  padding-top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+div.adminHeader nav h4 {
+  color: white;
+}
+
+div.adminHeader nav ul {
+  padding-top: 15px;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+/*# sourceMappingURL=AdminHeader.css.map */

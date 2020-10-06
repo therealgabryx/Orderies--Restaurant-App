@@ -1,0 +1,28 @@
+:root {
+  --footer-color: #202020;
+  --background-color: #FFFFFF;
+  --background-accent: #EFFBFF;
+  --brand-main-lighter: #00BBF0;
+  --brand-main-color: #005792;
+  --brand-main-darker: #00204A;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body div.body {
+  min-height: 150vh;
+}
+
+body div.header {
+  min-height: 20vh;
+}
+/*# sourceMappingURL=App.css.map */

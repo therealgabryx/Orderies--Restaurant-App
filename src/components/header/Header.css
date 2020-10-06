@@ -1,0 +1,51 @@
+div.header {
+  min-height: 20vh;
+  background-color: var(--brand-main-color);
+  color: white;
+  text-align: center;
+}
+
+div.header nav {
+  height: 20vh;
+  padding-top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+div.header nav h4 {
+  color: white;
+}
+
+div.header nav ul {
+  padding-top: 15px;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+div.header nav a {
+  text-decoration: none;
+  color: white;
+}
+
+div.header nav a:hover {
+  text-decoration: none;
+  color: #aaaaaa;
+}
+/*# sourceMappingURL=Header.css.map */

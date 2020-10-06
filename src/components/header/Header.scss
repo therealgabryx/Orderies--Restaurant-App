@@ -1,0 +1,36 @@
+div.header {
+    min-height: 20vh;
+    background-color: var(--brand-main-color);
+    color: white;
+    text-align: center;
+
+    nav { 
+        height: 20vh;
+        padding-top: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        h4 {
+            color: white;
+        }
+
+        ul { 
+            padding-top: 15px;
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly; 
+        } 
+
+        a {
+            text-decoration: none;
+            color: white;
+        } 
+
+        a:hover {
+            text-decoration: none;
+            color: #aaaaaa;
+        } 
+    }
+} 
