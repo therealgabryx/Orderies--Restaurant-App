@@ -1,14 +1,10 @@
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config();
-}
+require('dotenv').config();
 
 /* MongoDB */
 const mongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
-const DBpass =
-    'ZK5C%24hi6wZA2KkZ'; /* 'ZK5C$hi6wZA2KkZ' >> non URL encoded */ /* ::TO-DO:: DB access on clear >> to hide in .env config */
-const uri = `mongodb+srv://Gabryx:${DBpass}@datacluster-t5wqs.mongodb.net/test?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://Gabryx:${process.env.DB_PASS}@datacluster-t5wqs.mongodb.net/test?retryWrites=true&w=majority`;
 
 /* Server -- Modules */
 const express = require('express');
